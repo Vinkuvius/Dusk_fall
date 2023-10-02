@@ -4,27 +4,34 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int maxHealth = 50;
-    private int currentHealth;
+    public float maxHealth = 2500f; // Maximum health of the enemy
+    private float currentHealth; // Current health of the enemy
 
-    void Start()
+    private void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = maxHealth; // Initialize current health to maximum health
     }
 
-    public void TakeDamage(int damage)
+    // Function to handle enemy taking damage
+    public void TakeDamage(float damage)
     {
+        // Reduce current health by the damage amount
         currentHealth -= damage;
-        if (currentHealth <= 0)
+
+        // Check if the enemy has run out of health
+        if (currentHealth <= 0f)
         {
-            Die();
+            Die(); // Call the Die function when the enemy's health reaches zero or below
         }
     }
 
-    void Die()
+    // Function to handle enemy's death
+    private void Die()
     {
-        // Implement enemy death logic, such as dropping loot or disappearing.
-        Debug.Log("Enemy died!");
+        // You can add any death animations or effects here
+        // For example, you might play an animation or spawn a particle effect
+
+        // Destroy the enemy GameObject when it dies
         Destroy(gameObject);
     }
 }
