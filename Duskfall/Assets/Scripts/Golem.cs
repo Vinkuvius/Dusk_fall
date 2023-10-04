@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class GolemHealth : MonoBehaviour
+public class Golem : MonoBehaviour
 {
-    public float maxHealth = 500f; // Maximum health of the golem
+    public float maxHealth = 10000f; // Maximum health of the golem
     public GameObject golemCorePrefab; // Prefab of the Golem's Core item
     public GameObject projectilePrefab; // Prefab of the golem's projectile
     public float projectileSpeed = 10f; // Speed of the projectile
