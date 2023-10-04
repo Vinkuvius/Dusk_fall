@@ -16,6 +16,10 @@ public class ComboSystem : MonoBehaviour
     private float lastAttackTime = 0f;
     private bool isComboActive = false;
 
+    GameObject enemyGameObject; // Declare a variable to store the reference to the enemy GameObject.
+
+    // Create an object reference to the EnemyDetection instance.
+    EnemyDetection enemyDetectionScript = GetComponent<EnemyDetection>();
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -63,6 +67,17 @@ public class ComboSystem : MonoBehaviour
             ResetCombo();
         }
     }
+
+
+    // ...
+
+    void DetectEnemy()
+    {
+        // Detect or find the enemy GameObject through your game logic.
+        // Assign it to the enemyGameObject variable.
+        enemyGameObject = EnemyDetection.DetectEnemy();  // ... Your detection logic here ...
+}
+
     void ExecuteAttack(int comboCount)
     {
         // Determine the damage of the attack based on combo count or type of spell.
@@ -90,8 +105,38 @@ public class ComboSystem : MonoBehaviour
             default:
                 break;
         }
+        // Check if it's the final hit in the combo for the fifth time.
+        if (comboCount >= 5)
+        {
+            // Stagger the enemy.
+            if (comboCount == 5)
+            {
+                // Access the enemy's EnemyStagger script.
+                EnemyStagger enemyStaggerScript = enemyGameObject.GetComponent<EnemyStagger>();
+
+                // Call the Stagger function to apply the stagger effect.
+                if (enemyStaggerScript != null)
+                {
+                    enemyStaggerScript.Stagger();
+                }
+            }
+        }
+
     }
 
+    public void AttackEnemy(GameObject enemy)
+    {
+        // You can implement your attack logic here.
+        // For example, apply damage to the enemy or trigger other effects.
+        // You would access the enemy's script, like EnemyHealth, to handle the attack.
+
+        EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+        if (enemyHealth != null)
+        {
+            int damage = CalculateDamage(currentComboCount);
+            enemyHealth.TakeDamage(damage);
+        }
+    }
     void KnockbackEnemy()
     {
         // Apply knockback force to the enemy's rigidbody.
@@ -105,7 +150,6 @@ public class ComboSystem : MonoBehaviour
             }
         }
     }
-
     void ResetCombo()
     {
         currentComboCount = 0;
