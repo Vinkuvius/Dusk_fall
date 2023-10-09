@@ -31,6 +31,12 @@ public class Golem : MonoBehaviour
     private bool isChasingPlayer = false; // Flag to track if the golem is chasing the player
     public float moveSpeed = 0.75f; // Golem's movement speed
 
+    private Vector3 originalPosition; // Store the original position of the golem
+    private bool isReturningToPosition = false; // Flag to track if the golem is returning to its original position
+    private float wanderRange = 70f; // Range within which the golem will wander
+    private float wanderTimer = 0f; // Timer for wandering duration
+    private float wanderDuration = 5f; // Duration of wandering in seconds
+
     private void Start()
     {
         currentHealth = maxHealth; // Initialize current health to maximum health
@@ -46,6 +52,8 @@ public class Golem : MonoBehaviour
 
         // Set the initial speed of the NavMeshAgent2D
         navAgent.speed = moveSpeed;
+
+        originalPosition = transform.position;
     }
 
     // Function to handle golem taking damage
@@ -152,6 +160,59 @@ public class Golem : MonoBehaviour
             isChasingPlayer = false;
             navAgent.velocity = Vector2.zero;
             navAgent.isStopped = true;
+
+            // Start returning to the original position
+            isReturningToPosition = true;
+            wanderTimer = 0f;
+        }
+
+        // If the player is not being chased and is within projectile range, shoot a projectile
+        if (!isChasingPlayer && distanceToPlayer >= 60f && distanceToPlayer <= 100f)
+        {
+            ShootProjectile();
+        }
+
+        // If the player is within attack2 range and not being chased, start chasing
+        if (isWithinAttack2Range && !isChasingPlayer)
+        {
+            isChasingPlayer = true;
+            navAgent.isStopped = false;
+        }
+
+        // Handle returning to original position and wandering
+        if (isReturningToPosition)
+        {
+            float distanceToOriginalPosition = Vector3.Distance(transform.position, originalPosition);
+
+            // Check if the golem has returned to its original position
+            if (distanceToOriginalPosition <= 1f)
+            {
+                isReturningToPosition = false; // Stop returning to the original position
+            }
+            else
+            {
+                // Return to the original position
+                navAgent.SetDestination(originalPosition);
+            }
+        }
+        else if (!isChasingPlayer)
+        {
+            // Handle wandering when not chasing the player
+            wanderTimer += Time.deltaTime;
+
+            if (wanderTimer >= wanderDuration)
+            {
+                // Choose a random destination within the wander range
+                Vector3 randomDestination = originalPosition + Random.insideUnitSphere * wanderRange;
+
+                // Ensure the destination stays within the wander range
+                randomDestination.y = originalPosition.y;
+
+                // Set the NavMeshAgent2D destination to the random destination
+                navAgent.SetDestination(randomDestination);
+
+                wanderTimer = 0f; // Reset the wander timer
+            }
         }
 
         // If the player is not being chased and is within projectile range, shoot a projectile
