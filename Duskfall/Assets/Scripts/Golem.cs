@@ -24,7 +24,7 @@ public class Golem : MonoBehaviour
     public float halfHealthThreshold = 0.5f; // Health threshold for activating attack2
 
     private bool isWithinAttack2Range = false; // Flag to track if the player is within attack2 range
-    public float attack2Range = 40f; // Range for activating attack2
+    public float attack2Range = 30f; // Range for activating attack2
 
     private Transform player; // Transform of the player
     private NavMeshAgent navAgent; // Golem's NavMeshAgent2D component
@@ -57,6 +57,10 @@ public class Golem : MonoBehaviour
             damage *= 2f; // Double the damage when staggered
         }
 
+        if (gameObject.CompareTag("Magic"))
+        {
+            damage *= 0.1f; // Reduce the damage to 10% for "Magic" attacks
+        }
         // Reduce current health by the damage amount
         currentHealth -= damage;
 
