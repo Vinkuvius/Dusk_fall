@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
@@ -10,38 +11,142 @@ public class Shop : MonoBehaviour
     private bool isShopMenuOpen = false; // Flag to track if the shop menu is open
     private DialogueManager dialogueManager; // Reference to the DialogueManager
 
+    public GameObject shopUI;
+    public PlayerInventory playerInventory;
+    public Text shopItemListText;
+    public Text messageText;
+
+    // Add public fields for item prices
+    public int greenPotionPrice = 1;
+    public int bluePotionPrice = 1;
+    public int redPotionPrice = 1;
+    public int yellowPotionPrice = 1;
+    public int purplePotionPrice = 1;
+
+    private bool isShopOpen = false;
+
     private void Start()
     {
-        // Disable the shop menu initially
-        if (shopMenu != null)
+        // Initialize the shop UI
+        if (shopUI != null)
         {
-            shopMenu.SetActive(false);
+            shopUI.SetActive(false);
         }
 
-        // Find the DialogueManager in the scene
-        dialogueManager = FindObjectOfType<DialogueManager>();
+        // Hide the message text
+        if (messageText != null)
+        {
+            messageText.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
     {
-        // Check if the player is within interaction distance and presses the "E" key
-        float distanceToShop = Vector3.Distance(transform.position, player.position);
-        if (distanceToShop <= interactionDistance)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (isShopOpen)
             {
-                // Toggle the shop menu on and off
-                ToggleShopMenu();
+                CloseShop();
             }
-            else if (Input.GetKeyDown(KeyCode.Escape) && isShopMenuOpen)
+            else
             {
-                // Close the shop menu if it's open and the "Esc" key is pressed
-                CloseShopMenu();
+                OpenShop();
             }
         }
     }
 
-    private void ToggleShopMenu()
+    private void OpenShop()
+    {
+        isShopOpen = true;
+        shopUI.SetActive(true);
+
+        // Build the shop item list based on player's inventory
+        BuildShopItemList();
+    }
+
+    private void CloseShop()
+    {
+        isShopOpen = false;
+        shopUI.SetActive(false);
+    }
+
+    private void BuildShopItemList()
+    {
+        // Create a list of items available in the shop
+        string itemList = "Items for Sale:\n";
+
+        // Logic for adding items based on player's golem cores
+        if (playerInventory.HasItem("Golem Core (Green)"))
+        {
+            itemList += "1. Green Potion - " + greenPotionPrice + " Gold\n";
+        }
+
+        if (playerInventory.HasItem("Golem Core (Blue)"))
+        {
+            itemList += "2. Blue Potion - " + bluePotionPrice + " Gold\n";
+        }
+
+        if (playerInventory.HasItem("Golem Core (Red)"))
+        {
+            itemList += "3. Red Potion - " + redPotionPrice + " Gold\n";
+        }
+
+        if (playerInventory.HasItem("Golem Core (Yellow)"))
+        {
+            itemList += "4. Yellow Potion - " + yellowPotionPrice + " Gold\n";
+        }
+
+        // Include Purple Potion
+        if (playerInventory.HasItem("Golem Core (Purple)"))
+        {
+            itemList += "5. Purple Potion - " + purplePotionPrice + " Gold\n";
+        }
+
+        // Display the item list in the shop UI
+        shopItemListText.text = itemList;
+    }
+
+    public void PurchaseItem(int itemNumber)
+    {
+        // Logic for purchasing items
+        int itemPrice = 0;
+
+        switch (itemNumber)
+        {
+            case 1:
+                itemPrice = greenPotionPrice;
+                // Handle purchase of Green Potion
+                playerInventory.RemoveItem("Gold", itemPrice);
+                playerInventory.AddItem("Green Potion");
+                messageText.text = "You purchased a Green Potion!";
+                break;
+            case 2:
+                itemPrice = bluePotionPrice;
+                // Handle purchase of Blue Potion
+                playerInventory.RemoveItem("Gold", itemPrice);
+                playerInventory.AddItem("Blue Potion");
+                messageText.text = "You purchased a Blue Potion!";
+                break;
+            case 3:
+                itemPrice = redPotionPrice;
+                // Handle purchase of Red Potion
+                playerInventory.RemoveItem("Gold", itemPrice);
+                playerInventory.AddItem("Red Potion");
+                messageText.text = "You purchased a Red Potion!";
+                break;
+            default:
+                messageText.text = "Invalid item number.";
+                break;
+        }
+
+        // Update the shop item list
+        BuildShopItemList();
+        messageText.gameObject.SetActive(true);
+    }
+
+
+
+private void ToggleShopMenu()
     {
         // Toggle the shop menu on and off
         isShopMenuOpen = !isShopMenuOpen;
