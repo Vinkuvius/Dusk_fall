@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AdvancedEnemyAI2D : MonoBehaviour
+public class EnemyStuff : MonoBehaviour
 {
     private Transform player;
     private NavMeshAgent navAgent;

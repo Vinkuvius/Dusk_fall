@@ -28,7 +28,7 @@ public class GolemDoor : MonoBehaviour
             else
             {
                 // Inform the player that they need more golem cores to open the door
-                Debug.Log("You need more golem cores to open this door.");
+                Debug.Log("Thou lacks the required amount of anccient artifacts");
             }
         }
     }
