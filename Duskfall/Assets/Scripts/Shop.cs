@@ -82,7 +82,7 @@ public class Shop : MonoBehaviour
         // Display the welcome message in the DialogueManager
         if (dialogueManager != null)
         {
-            dialogueManager.StartDialogue("Welcome to my wonderful top hat shop, full of mystery and wonder to behold. What can I do for you today?");
+            dialogueManager.StartDialogue("Hark, and welcome to mine wondrous emporium of mystics, replete with mysteries and marvels to witness. Pray, what service may I render thee this day?");
         }
     }
 }
