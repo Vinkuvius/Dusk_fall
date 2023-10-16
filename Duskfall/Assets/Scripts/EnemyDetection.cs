@@ -7,7 +7,8 @@ public class EnemyDetection : MonoBehaviour
     public float detectionRange = 10f; // Range of the detection ray.
     public LayerMask enemyLayer;      // Layer containing enemy GameObjects.
 
-    private GameObject detectedEnemy; // Reference to the detected enemy.
+    public GameObject DetectedEnemy; // Reference to the detected enemy.
+
 
     void Update()
     {
@@ -24,19 +25,19 @@ public class EnemyDetection : MonoBehaviour
             if (hit.collider.CompareTag("Enemy"))
             {
                 // Store a reference to the detected enemy GameObject.
-                detectedEnemy = hit.collider.gameObject;
+                DetectedEnemy = hit.collider.gameObject;
             }
         }
         else
         {
             // Reset the detected enemy reference if no enemy is in sight.
-            detectedEnemy = null;
+            DetectedEnemy = null;
         }
     }
 
     public void DetectEnemy()
     {
-        if (detectedEnemy != null)
+        if (DetectedEnemy != null)
         {
             // The enemy has been detected, and you can do something with it.
             // For example, you can attack the detected enemy or interact with it.

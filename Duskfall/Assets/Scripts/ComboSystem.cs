@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,7 @@ public class ComboSystem : MonoBehaviour
     GameObject enemyGameObject; // Declare a variable to store the reference to the enemy GameObject.
 
     // Create an object reference to the EnemyDetection instance.
-    EnemyDetection enemyDetectionScript = GetComponent<EnemyDetection>();
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -73,9 +74,10 @@ public class ComboSystem : MonoBehaviour
 
     void DetectEnemy()
     {
+        EnemyDetection enemyDetectionScript = GetComponent<EnemyDetection>();
         // Detect or find the enemy GameObject through your game logic.
         // Assign it to the enemyGameObject variable.
-        enemyGameObject = EnemyDetection.DetectEnemy();  // ... Your detection logic here ...
+        enemyGameObject = EnemyDetection.DetectedEnemy();  // ... Your detection logic here ...
 }
 
     void ExecuteAttack(int comboCount)
