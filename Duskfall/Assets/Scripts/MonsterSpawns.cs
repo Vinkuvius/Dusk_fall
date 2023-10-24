@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
+
     [System.Serializable]
     public class Monster
     {
