@@ -28,7 +28,7 @@ public class WallWalker : MonoBehaviour
     {
         isWallWalking = true;
         // Flip the model to match the wall orientation.
-        transform.Rotate(Vector3.up, 180); // Rotate 180 degrees around the Y-axis.
+        transform.Rotate(Vector3.up, 90); // Rotate 180 degrees around the Y-axis.
     }
 
     public void StopWallWalk()

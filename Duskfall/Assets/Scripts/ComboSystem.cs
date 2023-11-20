@@ -72,12 +72,12 @@ public class ComboSystem : MonoBehaviour
 
     // ...
 
-    void DetectEnemy()
+    static void DetectedEnemy()
     {
         EnemyDetection enemyDetectionScript = GetComponent<EnemyDetection>();
         // Detect or find the enemy GameObject through your game logic.
         // Assign it to the enemyGameObject variable.
-        enemyGameObject = EnemyDetection.DetectedEnemy();  // ... Your detection logic here ...
+        enemyGameObject = EnemyDetection.DetectEnemy();  // ... Your detection logic here ...
 }
 
     void ExecuteAttack(int comboCount)

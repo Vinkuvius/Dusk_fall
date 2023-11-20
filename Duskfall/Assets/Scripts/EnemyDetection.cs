@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class EnemyDetection : MonoBehaviour
     public LayerMask enemyLayer;      // Layer containing enemy GameObjects.
 
     public GameObject DetectedEnemy; // Reference to the detected enemy.
+ 
 
 
     void Update()
@@ -35,7 +37,7 @@ public class EnemyDetection : MonoBehaviour
         }
     }
 
-    public void DetectEnemy()
+    public static void DetectEnemy()
     {
         if (DetectedEnemy != null)
         {
@@ -49,4 +51,6 @@ public class EnemyDetection : MonoBehaviour
             Debug.Log("No enemy detected.");
         }
     }
+
+
 }
