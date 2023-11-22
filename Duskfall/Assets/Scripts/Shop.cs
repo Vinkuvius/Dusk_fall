@@ -17,13 +17,23 @@ public class Shop : MonoBehaviour
     public Text messageText;
 
     // Add public fields for item prices
-    public int greenPotionPrice = 1;
-    public int bluePotionPrice = 1;
-    public int redPotionPrice = 1;
-    public int yellowPotionPrice = 1;
-    public int purplePotionPrice = 1;
+    public int greenPotionPrice = 5;
+    public int bluePotionPrice = 10;
+    public int redPotionPrice = 20;
+    public int yellowPotionPrice = 30;
+    public int purplePotionPrice = 45;
+    public int GreenBandanaPrice = 40;
 
     private bool isShopOpen = false;
+
+    private void DisplayWelcomeMessage()
+    {
+        // Display the welcome message in the DialogueManager
+        if (dialogueManager != null)
+        {
+            dialogueManager.StartDialogue("Greetings. You've stumbled upon the CrystalGaze Emporium, or CrGaEm for short. I suppose there are mysteries and marvels around, or whatever. just buy something and go...");
+        }
+    }
 
     private void Start()
     {
@@ -79,6 +89,7 @@ public class Shop : MonoBehaviour
         if (playerInventory.HasItem("Golem Core (Green)"))
         {
             itemList += "1. Green Potion - " + greenPotionPrice + " Gold\n";
+            itemList += "1. Greenbandana - " + GreenBandanaPrice + "Gold\n";
         }
 
         if (playerInventory.HasItem("Golem Core (Blue)"))
@@ -134,6 +145,28 @@ public class Shop : MonoBehaviour
                 playerInventory.AddItem("Red Potion");
                 messageText.text = "You purchased a Red Potion!";
                 break;
+            case 4:
+                itemPrice = GreenBandanaPrice;
+                //Handle purchase of Greenbandana
+                playerInventory.RemoveItem("Gold", itemPrice);
+                playerInventory.AddItem("GreenBandana");
+                messageText.text = "You purchased a Greenbandana!";
+                break;
+            case 5:
+                itemPrice = purplePotionPrice;
+                //Handle purchase of Pruple potion
+                playerInventory.RemoveItem("Gold", itemPrice);
+                playerInventory.AddItem("Purple potion");
+                messageText.text = "You purchased a Pruple potion";
+                break;
+            case 6:
+                itemPrice = yellowPotionPrice;
+                //Handle purchase of Yellow potion
+                playerInventory.RemoveItem("Gold", itemPrice);
+                playerInventory.AddItem("Yellow potion");
+                messageText.text = "You purchased a Yellow potion";
+                break;
+
             default:
                 messageText.text = "Invalid item number.";
                 break;
@@ -182,12 +215,5 @@ private void ToggleShopMenu()
         }
     }
 
-    private void DisplayWelcomeMessage()
-    {
-        // Display the welcome message in the DialogueManager
-        if (dialogueManager != null)
-        {
-            dialogueManager.StartDialogue("Hark, and welcome to mine wondrous emporium of mystics, replete with mysteries and marvels to witness. Pray, what service may I render thee this day?");
-        }
-    }
+    
 }
