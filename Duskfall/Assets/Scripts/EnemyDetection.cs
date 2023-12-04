@@ -37,7 +37,7 @@ public class EnemyDetection : MonoBehaviour
         }
     }
 
-    public static void DetectEnemy()
+    public void DetectEnemy()
     {
         if (DetectedEnemy != null)
         {
@@ -51,6 +51,5 @@ public class EnemyDetection : MonoBehaviour
             Debug.Log("No enemy detected.");
         }
     }
-
 
 }
