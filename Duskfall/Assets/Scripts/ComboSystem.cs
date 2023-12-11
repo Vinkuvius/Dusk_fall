@@ -180,13 +180,11 @@ public class ComboSystem : MonoBehaviour
     {
         // Implement the logic to get the enemy's health component.
         // You can use raycasting or other methods to identify the target enemy.
-        // Example: RaycastHit hit;
-        //          if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange, enemyLayer))
-        //          {
-        //              return hit.collider.GetComponent<EnemyHealth>();
-        //          }
-        return null; // Replace with your implementation.
+         RaycastHit hit;
+                 if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange, enemyLayer))
+                 {
+                     return hit.collider.GetComponent<EnemyHealth>();
+                 }
+        return null;
     }
-
-    // Other functions remain the same...
 }
