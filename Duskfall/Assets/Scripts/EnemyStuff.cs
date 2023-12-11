@@ -17,6 +17,7 @@ public class EnemyStuff : MonoBehaviour
     public float comboAttackDelay = 1.5f;
     public float comboResetTime = 3f;
     public float magicCooldown = 5f;
+    
 
     private bool isChasing = false;
     private bool isAttacking = false;
@@ -185,17 +186,17 @@ public class EnemyStuff : MonoBehaviour
         enemyMP -= magic2Cost; // Deduct MP for using Magic2
     }
 
-    void DealDamage(float damage)
+    void DealDamage(int damage)
     {
         // You can implement your damage logic here, like reducing player's health.
         // For example, you might have a PlayerHealth script on the player object.
 
         // Example code (assuming PlayerHealth is a script on the player):
-        // PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-        // if (playerHealth != null)
-        // {
-        //     playerHealth.TakeDamage(damage);
-        // }
+         PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+         if (playerHealth != null)
+         {
+             playerHealth.TakeDamage(damage);
+         }
     }
 
     void ResetCombo()

@@ -23,6 +23,7 @@ public class Shop : MonoBehaviour
     public int yellowPotionPrice = 30;
     public int purplePotionPrice = 45;
     public int GreenBandanaPrice = 40;
+    public int KnifePrice = 5;
 
     private bool isShopOpen = false;
 
@@ -84,6 +85,11 @@ public class Shop : MonoBehaviour
     {
         // Create a list of items available in the shop
         string itemList = "Items for Sale:\n";
+
+        if (playerInventory.HasItem("Gold"))
+        {
+            itemList += "1. Knife - " + KnifePrice + " Gold\n";
+        }
 
         // Logic for adding items based on player's golem cores
         if (playerInventory.HasItem("Golem Core (Green)"))

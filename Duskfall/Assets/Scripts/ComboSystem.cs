@@ -77,7 +77,8 @@ public class ComboSystem : MonoBehaviour
         EnemyDetection enemyDetectionScript = GetComponent<EnemyDetection>();
         // Detect or find the enemy GameObject through your game logic.
         // Assign it to the enemyGameObject variable.
-        enemyGameObject = enemyDetectionScript.DetectEnemy();  // ... Your detection logic here ...
+        enemyGameObject = enemyDetectionScript.DetectEnemy();
+        
     }
 
 

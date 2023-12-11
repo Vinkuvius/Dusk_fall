@@ -37,19 +37,9 @@ public class EnemyDetection : MonoBehaviour
         }
     }
 
-    public void DetectEnemy()
+    public GameObject DetectEnemy()
     {
-        if (DetectedEnemy != null)
-        {
-            // The enemy has been detected, and you can do something with it.
-            // For example, you can attack the detected enemy or interact with it.
-            Debug.Log("Enemy detected!");
-        }
-        else
-        {
-            // No enemy is in sight.
-            Debug.Log("No enemy detected.");
-        }
+        return DetectedEnemy;
     }
 
 }
