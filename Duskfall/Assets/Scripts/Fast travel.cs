@@ -19,9 +19,7 @@ public class FastTravelPoint : MonoBehaviour
 
     private void DisplayDestinationMenu(GameObject player)
     {
-        // You can implement your own UI for selecting a destination
-        // For simplicity, let's assume you have a UI canvas named "FastTravelMenu" with buttons for each destination.
-        // When a button is clicked, call the TeleportToDestination method with the corresponding destination scene and position.
+        //Fasttravel UI needed
     }
 
     public void TeleportToDestination(string destinationScene, Transform destinationTransform, GameObject player)
