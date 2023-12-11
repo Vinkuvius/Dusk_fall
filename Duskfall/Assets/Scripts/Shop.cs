@@ -86,42 +86,49 @@ public class Shop : MonoBehaviour
         // Create a list of items available in the shop
         string itemList = "Items for Sale:\n";
 
+        // Helper function to append item to the itemList
+        void AddItem(string itemName, int itemPrice)
+        {
+            itemList += $"{itemName} - {itemPrice} Gold\n";
+        }
+
+        // Check if the player has gold in their inventory to buy the Knife
         if (playerInventory.HasItem("Gold"))
         {
-            itemList += "1. Knife - " + KnifePrice + " Gold\n";
+            AddItem("Knife", KnifePrice);
         }
 
         // Logic for adding items based on player's golem cores
-        if (playerInventory.HasItem("Golem Core (Green)"))
-        {
-            itemList += "1. Green Potion - " + greenPotionPrice + " Gold\n";
-            itemList += "1. Greenbandana - " + GreenBandanaPrice + "Gold\n";
-        }
+        string[] golemCores = { "Golem Core (Green)", "Golem Core (Blue)", "Golem Core (Red)", "Golem Core (Yellow)", "Golem Core (Purple)" };
 
-        if (playerInventory.HasItem("Golem Core (Blue)"))
+        foreach (var core in golemCores)
         {
-            itemList += "2. Blue Potion - " + bluePotionPrice + " Gold\n";
-        }
-
-        if (playerInventory.HasItem("Golem Core (Red)"))
-        {
-            itemList += "3. Red Potion - " + redPotionPrice + " Gold\n";
-        }
-
-        if (playerInventory.HasItem("Golem Core (Yellow)"))
-        {
-            itemList += "4. Yellow Potion - " + yellowPotionPrice + " Gold\n";
-        }
-
-        // Include Purple Potion
-        if (playerInventory.HasItem("Golem Core (Purple)"))
-        {
-            itemList += "5. Purple Potion - " + purplePotionPrice + " Gold\n";
+            switch (core)
+            {
+                // If the player has the corosponding Core, then more items are unlocked
+                case "Golem Core (Green)":
+                    AddItem("Green Potion", greenPotionPrice);
+                    AddItem("Greenbandana", GreenBandanaPrice);
+                    break;
+                case "Golem Core (Blue)":
+                    AddItem("Blue Potion", bluePotionPrice);
+                    break;
+                case "Golem Core (Red)":
+                    AddItem("Red Potion", redPotionPrice);
+                    break;
+                case "Golem Core (Yellow)":
+                    AddItem("Yellow Potion", yellowPotionPrice);
+                    break;
+                case "Golem Core (Purple)":
+                    AddItem("Purple Potion", purplePotionPrice);
+                    break;
+            }
         }
 
         // Display the item list in the shop UI
         shopItemListText.text = itemList;
     }
+
 
     public void PurchaseItem(int itemNumber)
     {
@@ -130,44 +137,39 @@ public class Shop : MonoBehaviour
 
         switch (itemNumber)
         {
+            // Handle purchase of Green Potion and the other Potions and the Bandana
             case 1:
                 itemPrice = greenPotionPrice;
-                // Handle purchase of Green Potion
                 playerInventory.RemoveItem("Gold", itemPrice);
                 playerInventory.AddItem("Green Potion");
                 messageText.text = "You purchased a Green Potion!";
                 break;
             case 2:
                 itemPrice = bluePotionPrice;
-                // Handle purchase of Blue Potion
                 playerInventory.RemoveItem("Gold", itemPrice);
                 playerInventory.AddItem("Blue Potion");
                 messageText.text = "You purchased a Blue Potion!";
                 break;
             case 3:
                 itemPrice = redPotionPrice;
-                // Handle purchase of Red Potion
                 playerInventory.RemoveItem("Gold", itemPrice);
                 playerInventory.AddItem("Red Potion");
                 messageText.text = "You purchased a Red Potion!";
                 break;
             case 4:
                 itemPrice = GreenBandanaPrice;
-                //Handle purchase of Greenbandana
                 playerInventory.RemoveItem("Gold", itemPrice);
                 playerInventory.AddItem("GreenBandana");
                 messageText.text = "You purchased a Greenbandana!";
                 break;
             case 5:
                 itemPrice = purplePotionPrice;
-                //Handle purchase of Pruple potion
                 playerInventory.RemoveItem("Gold", itemPrice);
                 playerInventory.AddItem("Purple potion");
                 messageText.text = "You purchased a Pruple potion";
                 break;
             case 6:
                 itemPrice = yellowPotionPrice;
-                //Handle purchase of Yellow potion
                 playerInventory.RemoveItem("Gold", itemPrice);
                 playerInventory.AddItem("Yellow potion");
                 messageText.text = "You purchased a Yellow potion";
