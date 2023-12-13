@@ -19,8 +19,6 @@ public class ComboSystem : MonoBehaviour
 
     GameObject enemyGameObject; // Declare a variable to store the reference to the enemy GameObject.
 
-    // Create an object reference to the EnemyDetection instance.
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -70,8 +68,6 @@ public class ComboSystem : MonoBehaviour
     }
 
 
-    // ...
-
     void DetectedEnemy()
     {
         EnemyDetection enemyDetectionScript = GetComponent<EnemyDetection>();
@@ -89,7 +85,6 @@ public class ComboSystem : MonoBehaviour
         // Determine the damage of the attack based on combo count or type of spell.
         int damage = CalculateDamage(comboCount);
         // Perform different attacks based on the combo count.
-        // For simplicity, we'll just log messages here.
         // Check if the enemy is in range and has health.
         if (IsEnemyInRange())
         {
@@ -120,7 +115,7 @@ public class ComboSystem : MonoBehaviour
                 // Access the enemy's EnemyStagger script.
                 EnemyStagger enemyStaggerScript = enemyGameObject.GetComponent<EnemyStagger>();
 
-                // Call the Stagger function to apply the stagger effect.
+                // Appy stagger effect
                 if (enemyStaggerScript != null)
                 {
                     enemyStaggerScript.Stagger();
@@ -132,10 +127,7 @@ public class ComboSystem : MonoBehaviour
 
     public void AttackEnemy(GameObject enemy)
     {
-        // You can implement your attack logic here.
-        // For example, apply damage to the enemy or trigger other effects.
-        // You would access the enemy's script, like EnemyHealth, to handle the attack.
-
+        //Attack logic
         EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
         if (enemyHealth != null)
         {
@@ -164,7 +156,6 @@ public class ComboSystem : MonoBehaviour
     int CalculateDamage(int comboCount)
     {
         // Calculate damage based on combo count, spell type, or any other relevant factors.
-        // You can implement more complex damage calculations here.
         return baseAttackDamage * comboCount;
     }
     bool IsEnemyInRange()
@@ -178,8 +169,7 @@ public class ComboSystem : MonoBehaviour
     }
     EnemyHealth GetEnemyHealth()
     {
-        // Implement the logic to get the enemy's health component.
-        // You can use raycasting or other methods to identify the target enemy.
+        //get the enemy's health component.
          RaycastHit hit;
                  if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange, enemyLayer))
                  {
