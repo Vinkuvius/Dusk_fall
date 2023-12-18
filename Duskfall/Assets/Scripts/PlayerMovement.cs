@@ -4,13 +4,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float sprintSpeedMultiplier = 2f;
+    public float sprintSpeed = 10f;
     public float jumpForce = 10f;
     public float dodgeForce = 15f;
-    public float dodgeCooldown = 1.5f;
+    public LayerMask groundLayer;
 
-    private bool canDodge = true;
     private Rigidbody2D rb;
+    private float groundRaycastLength = 0.2f;
+    private bool canDropThrough = false;
 
     void Start()
     {
@@ -19,46 +20,76 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Check if the player is on the ground
-        bool isGrounded = IsGrounded();
-
         // Player movement
         float horizontalInput = Input.GetAxis("Horizontal");
-        Vector2 moveDirection = new Vector2(horizontalInput, 0f);
+        float verticalInput = Input.GetAxis("Vertical");
+
+        Vector2 moveDirection = new Vector2(horizontalInput, verticalInput).normalized;
 
         // Sprinting
-        if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
+        float currentMoveSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : moveSpeed;
+        Vector2 moveVelocity = moveDirection * currentMoveSpeed;
+        rb.velocity = new Vector2(moveVelocity.x, rb.velocity.y);
+
+        // Jumping
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            moveDirection *= sprintSpeedMultiplier;
+            Jump();
         }
 
         // Dodging
-        if (Input.GetKeyDown(KeyCode.Space) && canDodge && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(DodgeCooldown());
-            rb.velocity = new Vector2(moveDirection.x * dodgeForce, rb.velocity.y);
+            float dodgeDirection = transform.localScale.x; // Use the player's facing direction
+            rb.velocity = new Vector2(dodgeDirection * dodgeForce, rb.velocity.y);
         }
 
-        // Jumping
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        // Drop through platforms with the "DropThrough" tag
+        if (Input.GetKeyDown(KeyCode.S) && !canDropThrough)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            canDropThrough = true;
+            Invoke("ResetDropThrough", 0.5f); // Reset after 0.5 seconds to avoid immediate re-trigger
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+            foreach (var collider in colliders)
+            {
+                if (collider.CompareTag("DropThrough"))
+                {
+                    collider.enabled = false; // Disable the collider temporarily
+                    Invoke("EnableCollider", 0.2f); // Enable it after a short delay
+                    break;
+                }
+            }
         }
-
-        // Apply movement
-        rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
-
     }
+
+    void Jump()
+    {
+        if (IsGrounded())
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+    }
+
     bool IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 100f);
-        return hit.collider != null && hit.collider.CompareTag("Ground");
+        return Physics2D.Raycast(transform.position, Vector2.down, groundRaycastLength, groundLayer);
     }
 
-    IEnumerator DodgeCooldown()
+    void ResetDropThrough()
     {
-        canDodge = false;
-        yield return new WaitForSeconds(dodgeCooldown);
-        canDodge = true;
+        canDropThrough = false;
+    }
+
+    void EnableCollider()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+        foreach (var collider in colliders)
+        {
+            if (collider.CompareTag("DropThrough"))
+            {
+                collider.enabled = true;
+                break;
+            }
+        }
     }
 }
