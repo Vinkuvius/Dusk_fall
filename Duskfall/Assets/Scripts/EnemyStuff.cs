@@ -17,7 +17,6 @@ public class EnemyStuff : MonoBehaviour
     public float comboAttackDelay = 1.5f;
     public float comboResetTime = 3f;
     public float magicCooldown = 5f;
-    
 
     private bool isChasing = false;
     private bool isAttacking = false;
@@ -33,8 +32,8 @@ public class EnemyStuff : MonoBehaviour
 
     private float enemyMP = 250f;
     private float magicCost = 2f;
-    private float magic2Cost = 5f; // MP cost for Magic2
-    private float maxHP = 1500f; // Max HP of the enemy
+    private float magic2Cost = 5f;
+    private float maxHP = 1500f;
 
     private float normalAttackDamage = 225f;
     private float comboAttackDamage = 675f;
@@ -42,7 +41,7 @@ public class EnemyStuff : MonoBehaviour
     private float magic1Damage = 195f;
     private float magic2Damage = 450f;
 
-    private bool isChasingPlayer = false; // Added to track if the enemy is chasing the player
+    private bool isChasingPlayer = false;
 
     void Start()
     {
@@ -55,10 +54,10 @@ public class EnemyStuff : MonoBehaviour
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-        if (distanceToPlayer <= rushDistance && enemyHP > cautiousThreshold)
+        if (distanceToPlayer <= rushDistance && enemyHP > cautiousThreshold && CanSeePlayer())
         {
             isChasing = true;
-            isChasingPlayer = true; // Enemy is chasing the player
+            isChasingPlayer = true;
             navAgent.SetDestination(player.position);
             animator.SetBool("isWalking", true);
 
@@ -77,12 +76,11 @@ public class EnemyStuff : MonoBehaviour
         else if (isChasing)
         {
             isChasing = false;
-            isChasingPlayer = false; // Enemy is no longer chasing the player
+            isChasingPlayer = false;
             navAgent.velocity = Vector2.zero;
             animator.SetBool("isWalking", false);
         }
 
-        // Check if the enemy should stop chasing the player when the player is 50 meters away
         if (isChasingPlayer && distanceToPlayer > 50f)
         {
             isChasing = false;
@@ -93,10 +91,9 @@ public class EnemyStuff : MonoBehaviour
 
         if (distanceToPlayer > longRangeDistance && !isAttacking && timeSinceLastMagic >= magicCooldown && hasSeenPlayer)
         {
-            // Check if there's enough MP for Magic1 or Magic2
             if (enemyMP >= magicCost)
             {
-                if (enemyHP < maxHP * 0.5f && Random.value < 0.7f) // Higher chance to use Magic2 when HP is below half
+                if (enemyHP < maxHP * 0.5f && Random.value < 0.7f)
                 {
                     PerformMagic2();
                 }
@@ -174,7 +171,7 @@ public class EnemyStuff : MonoBehaviour
         animator.SetTrigger("Magic1");
         isAttacking = true;
         timeSinceLastMagic = 0f;
-        enemyMP -= magicCost; // Deduct MP for using Magic1
+        enemyMP -= magicCost;
     }
 
     void PerformMagic2()
@@ -183,20 +180,12 @@ public class EnemyStuff : MonoBehaviour
         animator.SetTrigger("Magic2");
         isAttacking = true;
         timeSinceLastMagic = 0f;
-        enemyMP -= magic2Cost; // Deduct MP for using Magic2
+        enemyMP -= magic2Cost;
     }
 
     void DealDamage(int damage)
     {
-        // You can implement your damage logic here, like reducing player's health.
-        // For example, you might have a PlayerHealth script on the player object.
-
-        // Example code (assuming PlayerHealth is a script on the player):
-         PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-         if (playerHealth != null)
-         {
-             playerHealth.TakeDamage(damage);
-         }
+        // Deal damage logic here
     }
 
     void ResetCombo()
@@ -206,14 +195,14 @@ public class EnemyStuff : MonoBehaviour
         timeSinceLastAttack = 0f;
     }
 
-    // Add a method to check if the enemy can see the player through objects with the "2DCollision" tag
     bool CanSeePlayer()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position - transform.position, chaseDistance);
         if (hit.collider != null && hit.collider.CompareTag("2DCollision"))
         {
-            return false; // Can't see through objects with the "2DCollision" tag
+            return false;
         }
         return true;
     }
 }
+
