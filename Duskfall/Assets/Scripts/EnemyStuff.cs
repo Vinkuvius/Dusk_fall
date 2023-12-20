@@ -183,10 +183,90 @@ public class EnemyStuff : MonoBehaviour
         enemyMP -= magic2Cost;
     }
 
-    void DealDamage(int damage)
+    //IEnumerator ComboAttack1()
+    //{
+    //    comboStage = 1;
+    //    animator.SetTrigger("Attack1");
+    //    isAttacking = true;
+    //    currentComboChain++;
+
+    //    // Deal damage during the attack
+    //    DealDamage(normalAttackDamage);
+
+    //    if (currentComboChain == 2)
+    //    {
+    //        comboStage = 0;
+    //        currentComboChain = 0;
+    //    }
+
+    //    yield return new WaitForSeconds(comboAttackDelay);
+    //    isAttacking = false;
+    //    timeSinceLastAttack = 0f;
+    //}
+
+    //IEnumerator ComboAttack2()
+    //{
+    //    comboStage = 2;
+    //    animator.SetTrigger("Attack2");
+    //    isAttacking = true;
+    //    currentComboChain++;
+
+    //    // Deal damage during the attack
+    //    DealDamage(comboAttackDamage);
+
+    //    if (currentComboChain == 2)
+    //    {
+    //        comboStage = 0;
+    //        currentComboChain = 0;
+    //    }
+
+    //    yield return new WaitForSeconds(comboAttackDelay);
+    //    isAttacking = false;
+    //    timeSinceLastAttack = 0f;
+    //}
+
+    //void PerformMagic1()
+    //{
+    //    comboStage = 0;
+    //    animator.SetTrigger("Magic1");
+    //    isAttacking = true;
+
+    //    // Deal damage during the magic attack
+    //    DealDamage(magic1Damage);
+
+    //    timeSinceLastMagic = 0f;
+    //    enemyMP -= magicCost;
+    //}
+
+    //void PerformMagic2()
+    //{
+    //    comboStage = 0;
+    //    animator.SetTrigger("Magic2");
+    //    isAttacking = true;
+
+    //    // Deal damage during the magic attack
+    //    DealDamage(magic2Damage);
+
+    //    timeSinceLastMagic = 0f;
+    //    enemyMP -= magic2Cost;
+    //}
+
+    void DealDamage(float physicalDamage, float magicalDamage)
     {
-        // Deal damage logic here
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage(physicalDamage, magicalDamage);
+        }
     }
+
+    // Example for physical attack
+    //DealDamage(normalAttackDamage, 0f);
+
+    // Example for magical attack
+    //DealDamage(0f, magic1Damage);
+
 
     void ResetCombo()
     {

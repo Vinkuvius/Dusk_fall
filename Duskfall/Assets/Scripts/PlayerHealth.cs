@@ -4,17 +4,31 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 100;
-    private int currentHealth;
+    public float maxHealth = 100f;
+    private float currentHealth;
+
+    private float armor;
+    private float magicResistance;
 
     void Start()
     {
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float physicalDamage, float magicalDamage)
     {
-        currentHealth -= damage;
+        // Apply armor to reduce physical damage
+        float effectivePhysicalDamage = Mathf.Max(0, physicalDamage - armor);
+
+        // Apply magic resistance to reduce magical damage
+        float effectiveMagicalDamage = magicalDamage * (1 - magicResistance);
+
+        // Calculate total damage
+        float totalDamage = effectivePhysicalDamage + effectiveMagicalDamage;
+
+        currentHealth -= totalDamage;
+
+        // You can add additional logic here, such as checking for death
         if (currentHealth <= 0)
         {
             Die();
@@ -23,8 +37,17 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        // Implement player death logic, such as respawn or game over.
-        Debug.Log("Player died!");
+        // Perform actions when the player dies
+        Debug.Log("Player died");
+    }
+
+    public void SetArmor(float newArmor)
+    {
+        armor = newArmor;
+    }
+
+    public void SetMagicResistance(float newMagicResistance)
+    {
+        magicResistance = newMagicResistance;
     }
 }
-
