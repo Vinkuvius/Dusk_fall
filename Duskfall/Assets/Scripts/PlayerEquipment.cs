@@ -23,3 +23,4 @@ public class PlayerEquipment : MonoBehaviour
             playerHealth.SetMagicResistance(magicResistance);
         }
     }
+}
