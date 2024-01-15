@@ -40,6 +40,12 @@ public class PlayerHealth : MonoBehaviour
         // Perform actions when the player dies
         Debug.Log("Player died");
     }
+    public class Item
+    {
+        public float armor;
+        public float magicResistance;
+        // Other item properties and methods
+    }
 
     public void SetArmor(float newArmor)
     {
