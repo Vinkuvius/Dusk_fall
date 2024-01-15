@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 100f;
     private float currentHealth;
 
-    private float armor;
+    public float armor;
     private float magicResistance;
 
     void Start()
