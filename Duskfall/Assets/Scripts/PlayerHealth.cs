@@ -7,8 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 100f;
     private float currentHealth;
 
-
-    private float armor;
+    public float armor;
     private float magicResistance;
 
     void Start()
@@ -42,12 +41,6 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Player died");
     }
 
-    public class Item
-    {
-        public float armor;
-        public float magicResistance;
-        // Other item properties and methods
-    }
     public void SetArmor(float newArmor)
     {
         armor = newArmor;

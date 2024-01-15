@@ -18,6 +18,15 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void FixedUpdate()
+    {
+        // Jumping
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Debug.Log("Jumping");
+            Jump();
+        }
+    }
     void Update()
     {
         // Player movement
@@ -34,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         // Jumping
         if (Input.GetKeyDown(KeyCode.W))
         {
+            Debug.Log("Jumping");
             Jump();
         }
 
