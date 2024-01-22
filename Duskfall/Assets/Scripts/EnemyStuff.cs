@@ -17,6 +17,9 @@ public class EnemyStuff : MonoBehaviour
     private float timeSinceLastAttack = 0f;
     private bool hasSeenPlayer = false;
 
+    private Coroutine coroutine;
+
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -30,10 +33,13 @@ public class EnemyStuff : MonoBehaviour
 
         if (distanceToPlayer <= attackDistance && !isAttacking)
         {
-            StartCoroutine(Attack());
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+
+            coroutine = StartCoroutine(Attack());
         }
 
-        RotateTowardsPlayer();
+        MoveTowardsPlayer();
 
         if (isAttacking)
         {
@@ -51,12 +57,21 @@ public class EnemyStuff : MonoBehaviour
         }
     }
 
-    void RotateTowardsPlayer()
+    void DetectedPlayer()
+    {
+        EnemyDetection enemyDetectionScript = GetComponent<EnemyDetection>();
+        // Detect or find the enemy GameObject through your game logic.
+        // Assign it to the enemyGameObject variable.
+        enemyDetectionScript.DetectPlayer();
+
+    }
+    void MoveTowardsPlayer()
     {
         Vector2 direction = (player.position - transform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion lookRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+        direction.x *= -1;
+        var scale = transform.localScale;
+        scale.x = Mathf.Sign(direction.x);
+        transform.localScale = scale;
     }
 
     System.Collections.IEnumerator Attack()
@@ -68,6 +83,8 @@ public class EnemyStuff : MonoBehaviour
         DealDamage(225f, 0f);  // Adjust damage values as needed
 
         yield return new WaitForSeconds(1.5f);  // Adjust as needed
+
+        coroutine = null;
     }
 
     void DealDamage(float physicalDamage, float magicalDamage)

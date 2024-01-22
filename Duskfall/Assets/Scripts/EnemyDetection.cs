@@ -5,41 +5,39 @@ using UnityEngine;
 
 public class EnemyDetection : MonoBehaviour
 {
-    public float detectionRange = 10f; // Range of the detection ray.
-    public LayerMask enemyLayer;      // Layer containing enemy GameObjects.
+    private GameObject player;
+    public float detectionRadius = 5f;
+    public LayerMask playerLayer;
 
-    public GameObject DetectedEnemy; // Reference to the detected enemy.
- 
-
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            Debug.LogError("Player not found. Make sure the player has the 'Player' tag.");
+        }
+    }
 
     void Update()
     {
-        // Create a ray from the player's position forward.
-        Ray ray = new Ray(transform.position, transform.forward);
-
-        // Declare a RaycastHit to store information about the hit.
-        RaycastHit hit;
-
-        // Check if the ray hits something within the detection range.
-        if (Physics.Raycast(ray, out hit, detectionRange, enemyLayer))
-        {
-            // Check if the hit object has an "Enemy" tag.
-            if (hit.collider.CompareTag("Enemy"))
-            {
-                // Store a reference to the detected enemy GameObject.
-                DetectedEnemy = hit.collider.gameObject;
-            }
-        }
-        else
-        {
-            // Reset the detected enemy reference if no enemy is in sight.
-            DetectedEnemy = null;
-        }
+        DetectPlayer();
     }
 
-    public GameObject DetectEnemy()
+   public void DetectPlayer()
     {
-        return DetectedEnemy;
+        if (Physics2D.OverlapCircle(transform.position, detectionRadius, playerLayer))
+        {
+            // Player detected
+            Debug.Log("Player detected!");
+
+            // Add your code here for actions when the player is detected
+        }
     }
 
+    void OnDrawGizmosSelected()
+    {
+        // Visualize the detection radius in the Unity editor
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+    }
 }

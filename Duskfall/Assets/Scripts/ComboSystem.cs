@@ -68,18 +68,6 @@ public class ComboSystem : MonoBehaviour
     }
 
 
-    void DetectedEnemy()
-    {
-        EnemyDetection enemyDetectionScript = GetComponent<EnemyDetection>();
-        // Detect or find the enemy GameObject through your game logic.
-        // Assign it to the enemyGameObject variable.
-        enemyGameObject = enemyDetectionScript.DetectEnemy();
-        
-    }
-
-
-
-
     void ExecuteAttack(int comboCount)
     {
         // Determine the damage of the attack based on combo count or type of spell.
