@@ -18,15 +18,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate()
-    {
-        // Jumping
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            Debug.Log("Jumping");
-            Jump();
-        }
-    }
+    
     void Update()
     {
         // Player movement
@@ -40,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 moveVelocity = moveDirection * currentMoveSpeed;
         rb.velocity = new Vector2(moveVelocity.x, rb.velocity.y);
 
+        Debug.Log("Update is being called");
         // Jumping
         if (Input.GetKeyDown(KeyCode.W))
         {
