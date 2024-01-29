@@ -353,6 +353,7 @@ GameObject:
   - component: {fileID: 485858646}
   - component: {fileID: 485858649}
   - component: {fileID: 485858650}
+  - component: {fileID: 485858651}
   m_Layer: 30
   m_Name: Player
   m_TagString: Player
@@ -461,7 +462,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.01, y: -0.86}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -472,7 +473,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.36, y: 2.11}
   m_EdgeRadius: 0
 --- !u!114 &485858650
 MonoBehaviour:
@@ -486,13 +487,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683c91083c165174889710f0ac9183d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 7.31
   sprintSpeed: 10
   jumpForce: 10
   dodgeForce: 150
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+--- !u!111 &485858651
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485858645}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: fdd920b52ded36a488dd990e1e9068c3, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: e5a83bff376736d46b6a185c96e73351, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &503554664
 GameObject:
   m_ObjectHideFlags: 0
@@ -2521,6 +2538,26 @@ PrefabInstance:
     - target: {fileID: 3338876908129418576, guid: bbf1fca22ef85a54cba9d7c3abbc2206, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338876908129418577, guid: bbf1fca22ef85a54cba9d7c3abbc2206, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -349251051, guid: fc1d67a4622f38e4a97f5152c1977ca9, type: 3}
+    - target: {fileID: 3338876908129418583, guid: bbf1fca22ef85a54cba9d7c3abbc2206, type: 3}
+      propertyPath: m_Size.x
+      value: 1.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338876908129418583, guid: bbf1fca22ef85a54cba9d7c3abbc2206, type: 3}
+      propertyPath: m_Size.y
+      value: 1.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338876908129418583, guid: bbf1fca22ef85a54cba9d7c3abbc2206, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338876908129418583, guid: bbf1fca22ef85a54cba9d7c3abbc2206, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3338876908129418588, guid: bbf1fca22ef85a54cba9d7c3abbc2206, type: 3}
       propertyPath: m_Name
