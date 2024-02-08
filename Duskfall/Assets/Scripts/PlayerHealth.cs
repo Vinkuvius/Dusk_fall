@@ -4,56 +4,37 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float maxHealth = 100f;
-    private float currentHealth;
+    public event System.Action<int> OnHealthChanged;
 
-    public float armor;
-    private float magicResistance;
+    public int maxHealth = 100;
+    public int currentHealth;
+    public int damage = 10;
+    public LoseCondition Lose;
 
-    void Start()
+    private void Start()
     {
+        // Makes so that currentHealth is the same as maxHealth at the start
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(float physicalDamage, float magicalDamage)
+    public void TakeDamage(int damage)
     {
-        // Apply armor to reduce physical damage
-        float effectivePhysicalDamage = Mathf.Max(0, physicalDamage - armor);
-
-        // Apply magic resistance to reduce magical damage
-        float effectiveMagicalDamage = magicalDamage * (1 - magicResistance);
-
-        // Calculate total damage
-        float totalDamage = effectivePhysicalDamage + effectiveMagicalDamage;
-
-        currentHealth -= totalDamage;
-
-        // You can add additional logic here, such as checking for death
+        currentHealth -= 10;
         if (currentHealth <= 0)
         {
-            Die();
+            Lose.CheckLoseCondition();
+            gameObject.SetActive(false);
         }
+        if (currentHealth >= 100)
+        {
+            currentHealth = 100;
+        }
+
+        OnHealthChanged?.Invoke(currentHealth);
+    }
+    public void restoreHealth()
+    {
+        currentHealth += 20;
     }
 
-    void Die()
-    {
-        // Perform actions when the player dies
-        Debug.Log("Player died");
-    }
-    public class Item
-    {
-        public float armor;
-        public float magicResistance;
-        // Other item properties and methods
-    }
-
-    public void SetArmor(float newArmor)
-    {
-        armor = newArmor;
-    }
-
-    public void SetMagicResistance(float newMagicResistance)
-    {
-        magicResistance = newMagicResistance;
-    }
 }

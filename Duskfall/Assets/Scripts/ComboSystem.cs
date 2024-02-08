@@ -95,21 +95,6 @@ public class ComboSystem : MonoBehaviour
                 break;
         }
         // Check if it's the final hit in the combo for the fifth time.
-        if (comboCount >= 5)
-        {
-            // Stagger the enemy.
-            if (comboCount == 5)
-            {
-                // Access the enemy's EnemyStagger script.
-                EnemyStagger enemyStaggerScript = enemyGameObject.GetComponent<EnemyStagger>();
-
-                // Appy stagger effect
-                if (enemyStaggerScript != null)
-                {
-                    enemyStaggerScript.Stagger();
-                }
-            }
-        }
 
     }
 
