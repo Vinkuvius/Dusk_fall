@@ -352,8 +352,10 @@ GameObject:
   - component: {fileID: 485858647}
   - component: {fileID: 485858646}
   - component: {fileID: 485858649}
+  - component: {fileID: 485858652}
   - component: {fileID: 485858650}
   - component: {fileID: 485858651}
+  - component: {fileID: 485858653}
   m_Layer: 30
   m_Name: Player
   m_TagString: Player
@@ -510,6 +512,36 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &485858652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485858645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b845c9804f8bd4bbded75e5e6c88a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  damage: 10
+  Lose: {fileID: 0}
+--- !u!114 &485858653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485858645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f580de1ff10ed409cb5295991e4228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 485858645}
+  Image: {fileID: 0}
 --- !u!1 &503554664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,6 +1330,8 @@ MonoBehaviour:
   shopMenu: {fileID: 0}
   player: {fileID: 0}
   interactionDistance: 10
+  isShopMenuOpen: 0
+  dialogueManager: {fileID: 0}
   shopUI: {fileID: 0}
   playerInventory: {fileID: 0}
   shopItemListText: {fileID: 0}
@@ -1309,6 +1343,7 @@ MonoBehaviour:
   purplePotionPrice: 45
   GreenBandanaPrice: 40
   KnifePrice: 5
+  isShopOpen: 0
 --- !u!4 &1029911320
 Transform:
   m_ObjectHideFlags: 0
