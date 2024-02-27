@@ -512,6 +512,7 @@ Animation:
   m_AnimatePhysics: 0
   m_CullingType: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &485858652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,6 +545,8 @@ MonoBehaviour:
   Image: {fileID: 0}
 =======
 >>>>>>> parent of ba4ce70 (Update Game.unity)
+=======
+>>>>>>> parent of 5758b46 (?)
 =======
 >>>>>>> parent of 5758b46 (?)
 --- !u!1 &503554664
