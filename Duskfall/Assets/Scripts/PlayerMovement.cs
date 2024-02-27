@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     public Transform groundcheck;
     bool isGrounded;
+    public bool isDoding;
 
 
     void Start()
@@ -42,13 +43,26 @@ public class PlayerMovement : MonoBehaviour
             dodgeDirection = -8f; // Dodge left
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == false)
         {
             rb.velocity = new Vector2(dodgeDirection * dodgeForce, rb.velocity.y);
         }
+    }
 
-        isGrounded = Physics2D.OverlapCapsule(groundcheck.position, new Vector2(1.8f, 0.3f), CapsuleDirection2D.Horizontal, 0, groundLayer);
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isDoding = false;
+        }
+    }
 
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isDoding = true;
+        }
     }
 
 }
