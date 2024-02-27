@@ -123,37 +123,44 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &1113955408
+--- !u!1 &513548593 stripped
 GameObject:
+  m_CorrespondingSourceObject: {fileID: 7083784314652316496, guid: bbf1fca22ef85a54cba9d7c3abbc2206, type: 3}
+  m_PrefabInstance: {fileID: 1897341379874557103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &513548598
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1113955409}
-  m_Layer: 0
-  m_Name: Groundcheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1113955409
-Transform:
+  m_GameObject: {fileID: 513548593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daee98665fd57d14c86800ad1629ee7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  moveSpeed: 4
+  health: 30
+  rayDistance: 0
+  damage: 20
+  isGround: 0
+--- !u!114 &513548599
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113955408}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2596991290712595814}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 513548593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6cce67c64dafb418a27fba7a793c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 2500
 --- !u!1 &1645086613
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,40 +471,6 @@ PrefabInstance:
     - target: {fileID: 2596991290282419025, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: groundcheck
       value: 
-      objectReference: {fileID: 1113955409}
-    - target: {fileID: 2596991290282419025, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1988595911}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
---- !u!1 &2596991290712595812 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2596991290282419017, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
-  m_PrefabInstance: {fileID: 2596991290712595811}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &2596991290712595813 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 2596991290282419026, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
-  m_PrefabInstance: {fileID: 2596991290712595811}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2596991290712595814 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2596991290282419020, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
-  m_PrefabInstance: {fileID: 2596991290712595811}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2596991290712595815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2596991290712595812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e8a92450382b2e4b8e377f5af9047ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 2596991290712595813}
-  isJumping: 0
-  jump: 300
