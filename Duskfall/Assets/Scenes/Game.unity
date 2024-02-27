@@ -353,10 +353,8 @@ GameObject:
   - component: {fileID: 485858647}
   - component: {fileID: 485858646}
   - component: {fileID: 485858649}
-  - component: {fileID: 485858652}
   - component: {fileID: 485858650}
   - component: {fileID: 485858651}
-  - component: {fileID: 485858653}
   m_Layer: 30
   m_Name: Player
   m_TagString: Player
@@ -513,6 +511,7 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+<<<<<<< HEAD
 --- !u!114 &485858652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,6 +544,8 @@ MonoBehaviour:
   Image: {fileID: 0}
 =======
 >>>>>>> parent of ba4ce70 (Update Game.unity)
+=======
+>>>>>>> parent of 5758b46 (?)
 --- !u!1 &503554664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,8 +1335,6 @@ MonoBehaviour:
   shopMenu: {fileID: 0}
   player: {fileID: 0}
   interactionDistance: 10
-  isShopMenuOpen: 0
-  dialogueManager: {fileID: 0}
   shopUI: {fileID: 0}
   playerInventory: {fileID: 0}
   shopItemListText: {fileID: 0}
@@ -1347,7 +1346,6 @@ MonoBehaviour:
   purplePotionPrice: 45
   GreenBandanaPrice: 40
   KnifePrice: 5
-  isShopOpen: 0
 --- !u!4 &1029911320
 Transform:
   m_ObjectHideFlags: 0
