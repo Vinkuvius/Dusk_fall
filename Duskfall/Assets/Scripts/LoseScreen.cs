@@ -6,7 +6,7 @@ public class LoseScreen : MonoBehaviour
 {
     public void ActivateLoseScreen()
     {
-        // Aktivera win screen conditions
+        // Activate Lose screen conditions
         gameObject.SetActive(true);
     }
 }
