@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= 10;
+        currentHealth -= damage;
         if (currentHealth <= 0)
         {
             Lose.CheckLoseCondition();
