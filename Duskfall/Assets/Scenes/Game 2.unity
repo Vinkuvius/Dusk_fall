@@ -161,6 +161,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 2500
+--- !u!4 &1206761248 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2596991290282419020, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
+  m_PrefabInstance: {fileID: 2596991290712595811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1645086613
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +177,7 @@ GameObject:
   - component: {fileID: 1645086616}
   - component: {fileID: 1645086615}
   - component: {fileID: 1645086614}
+  - component: {fileID: 1645086617}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -197,7 +203,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.12673211, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -245,6 +251,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1645086617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645086613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3be90a44d9511b4e8f294b7d5744d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1206761248}
+  offset: {x: 0, y: 0, z: -1}
+  velocity: {x: 0, y: 0, z: 0}
+  smoothTime: 20
+  minX: -10
+  maxX: 100
+  minY: 5
+  maxY: 5
 --- !u!1 &1988595908
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +389,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6087734899309508684, guid: bbf1fca22ef85a54cba9d7c3abbc2206, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6155351323848880336, guid: bbf1fca22ef85a54cba9d7c3abbc2206, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -424,6 +454,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2596991290282419017, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2596991290282419020, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -472,5 +506,9 @@ PrefabInstance:
       propertyPath: groundcheck
       value: 
       objectReference: {fileID: 1988595911}
+    - target: {fileID: 2596991290282419026, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
