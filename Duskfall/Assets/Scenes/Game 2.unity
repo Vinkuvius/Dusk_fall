@@ -414,6 +414,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &732405107
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 732405108}
+  m_Layer: 30
+  m_Name: WeaponPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &732405108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732405107}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.27, y: -0.3, z: 0}
+  m_LocalScale: {x: 0.9375, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1206761248}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &773083576
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,7 +934,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2596991290712595816}
   isJumping: 0
-  jump: 425
+  jump: 400
+  fall: 0
 --- !u!114 &2596991290712595828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -917,5 +949,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 1366089115241863042, guid: 1c823a83248f7a84ca0aa2087b71bc38, type: 3}
+  MeleeWeaponPrefab: {fileID: 3255837912879989678, guid: cededc21435d41746a455a74a5b101be, type: 3}
   Launcher: {fileID: 1437985796}
+  WeaponPoint: {fileID: 732405108}
   CoolDown: 5
+  Recharge: 1

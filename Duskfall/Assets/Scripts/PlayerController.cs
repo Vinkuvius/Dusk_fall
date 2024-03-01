@@ -4,10 +4,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public ProjectileBehavior ProjectilePrefab;
+    public MeleeWeapon MeleeWeaponPrefab;
     public Transform Launcher;
+    public Transform WeaponPoint;
 
     public float CoolDown = 60f;
+    public float Recharge = 1f;
     private bool canFire = true;
+    private bool IsReady = true;
 
     // Update is called once per frame
     void Update()
@@ -16,6 +20,14 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(ProjectilePrefab, Launcher.position, transform.rotation);
             StartCoroutine(ShootWithCooldown());
+            Debug.Log("Ultimate Move: Abyssal Void Collapse");
+        }
+        //melee attack, the "R" is temporary, QOL for me
+        if (Input.GetKeyDown(KeyCode.R) && IsReady)
+        {
+            Instantiate(MeleeWeaponPrefab, WeaponPoint.position, transform.rotation);
+            StartCoroutine(StabWithRecharge());
+            Debug.Log("Stabby Stab");
         }
     }
 
@@ -25,5 +37,12 @@ public class PlayerController : MonoBehaviour
         canFire = false;
         yield return new WaitForSeconds(CoolDown);
         canFire = true;
+    }
+
+    IEnumerator StabWithRecharge()
+    {
+        IsReady = false;
+        yield return new WaitForSeconds(Recharge);
+        IsReady = true;
     }
 }

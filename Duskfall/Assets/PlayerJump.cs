@@ -7,6 +7,12 @@ public class PlayerJump : MonoBehaviour
     public Rigidbody2D rb;
     public bool isJumping;
     public float jump;
+    public float fall;
+
+    private void Start()
+    {
+        fall = -jump *4;
+    }
 
     // Update is called once per frame
     void Update()
@@ -15,6 +21,11 @@ public class PlayerJump : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && isJumping == false)
         {
             rb.AddForce(new Vector2(rb.velocity.x, jump));
+        }
+
+        if (Input.GetKeyDown(KeyCode.S) && isJumping == true)
+        {
+            rb.AddForce(new Vector2 (rb.velocity.x, fall));
         }
     }
 
