@@ -25,6 +25,10 @@ public class PlayerJump : MonoBehaviour
         {
             isJumping = false;
         }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            isJumping = false;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -32,6 +36,10 @@ public class PlayerJump : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isJumping = true;
+        }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            isJumping = false;
         }
     }   
 }
