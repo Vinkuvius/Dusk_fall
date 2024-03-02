@@ -8,7 +8,7 @@ public class EnemyStuff : MonoBehaviour
     public LayerMask GroundLayer;
 
     public float moveSpeed = 3f; // Movementspeed of enemy
-    public float health = 30; // Enemy Health points
+    public float health = 50f; // Enemy Health points
     public float rayDistance;
 
     public int damage = 20;
