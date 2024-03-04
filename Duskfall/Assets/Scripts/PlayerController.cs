@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Transform Launcher;
     public Transform WeaponPoint;
     public Transform FireBallLuanch;
+    public Transform FireBallLuanch2;
 
     public float CoolDown = 60f;
     public float Recharge = 1f;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && ToGo)
         {
             Instantiate(FireBallSpellPrefab, FireBallLuanch.position, transform.rotation);
+            Instantiate(FireBallSpellPrefab, FireBallLuanch2.position, transform.rotation);
             StartCoroutine(MagicBeluga());
             Debug.Log("Fireball");
         }
