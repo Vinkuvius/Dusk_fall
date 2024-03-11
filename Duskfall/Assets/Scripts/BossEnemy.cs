@@ -25,25 +25,77 @@ public class BossEnemy : MonoBehaviour
     public float closingTimer3;
     public float offset;
     //public static Weapon Instance;
-    //public Projectile Projectile;
+    public EnemyProjectile Projectile;
     public WinCondition Win;
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player").transform; // Finds player
     }
+
 
     // Update is called once per frame
     void Update()
     {
         if (health <= 0)
         {
-            // Bossen är dödad, Kalla till win condition check
+            // Boss is dead, calls the win condition script
             Win.CheckWinCondition();
-            // Förstör Bossen
+            // Destroys the boss
             Destroy(gameObject);
+        }
+
+        if (Vector3.Distance(transform.position, player.position) <= 15)
+        {
+            transform.position = Vector3.MoveTowards(transform.position,
+            player.position,
+            moveSpeed * Time.deltaTime);
+        }
+        timer1 += Time.deltaTime;
+        if (timer1 > closingTimer1)
+        {
+            timer1 = 0f;
+            if (Vector3.Distance(transform.position, player.position) < attackRange)
+            {
+                Shoot1();
+            }
+        }
+
+        timer2 += Time.deltaTime;
+        if (timer2 > closingTimer2)
+        {
+            timer2 = 0f;
+            if (Vector3.Distance(transform.position, player.position) < attackRange)
+            {
+                Shoot2();
+            }
+        }
+        timer3 += Time.deltaTime;
+        if (timer3 > closingTimer3)
+        {
+            timer3 = 0f;
+            if (Vector3.Distance(transform.position, player.position) < attackRange)
+            {
+                Shoot3();
+            }
         }
     }
 
+    void Shoot1()
+    {
+        // Koden som gör att fienden skjuter
+        EnemyProjectile p1 = Instantiate(Projectile, bulletShootPoint1.position, Quaternion.LookRotation(transform.forward, transform.up));
+        p1.fireDirection = -transform.right;
+    }
+    void Shoot2()
+    {
+        EnemyProjectile p2 = Instantiate(Projectile, bulletShootPoint2.position, Quaternion.LookRotation(transform.forward, transform.up));
+        p2.fireDirection = -transform.right;
+    }
+    void Shoot3()
+    {
+        EnemyProjectile p3 = Instantiate(Projectile, bulletShootPoint3.position, Quaternion.LookRotation(transform.forward, transform.up));
+        p3.fireDirection = -transform.right;
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
