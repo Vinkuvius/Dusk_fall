@@ -3,21 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Magic
-  - Enemy
-  - Ground
-  - Wall
-  - DropPoint
-  - Boss
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Background
+  - 
   - Water
   - UI
-  - Ground
   - 
   - 
   - 
@@ -41,7 +34,8 @@ TagManager:
   - 
   - 
   - 
-  - Entity
+  - 
+  - 
   - 
   m_SortingLayers:
   - name: Default

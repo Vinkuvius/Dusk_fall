@@ -33,6 +33,10 @@ public class FireBallSpell : MonoBehaviour
         {
             other.gameObject.GetComponent<EnemyStuff>().health -= 7.5f;
         }
+        else if (other.gameObject.CompareTag("Boss"))
+        {
+            other.gameObject.GetComponent<BossEnemy>().health -= 3.25f;
+        }
 
         Destroy(gameObject);
     }

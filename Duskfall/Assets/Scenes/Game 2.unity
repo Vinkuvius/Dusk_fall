@@ -2397,6 +2397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 2871338760790716551, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
     - target: {fileID: 2871338760790716571, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -2454,8 +2458,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2871338760790716572, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
+      propertyPath: Projectile
+      value: 
+      objectReference: {fileID: -4734655565209398225, guid: b2b8b7f4546c8a943b25e729ffb88533, type: 3}
+    - target: {fileID: 2871338760790716572, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
       propertyPath: attackRange
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886308172838336539, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3410918730189224522, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381549746007455425, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
+      propertyPath: m_Layer
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
