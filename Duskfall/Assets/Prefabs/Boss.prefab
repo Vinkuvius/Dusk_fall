@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2871338760790716571}
   - component: {fileID: 2871338760790716570}
   - component: {fileID: 2871338760790716572}
+  - component: {fileID: -1692386989708982084}
   - component: {fileID: 749860674783976931}
   - component: {fileID: 318160014543321560}
   m_Layer: 0
@@ -121,7 +122,22 @@ MonoBehaviour:
   timer3: 0.6
   closingTimer3: 0
   offset: 0
+  Projectile: {fileID: -4734655565209398225, guid: b2b8b7f4546c8a943b25e729ffb88533, type: 3}
   Win: {fileID: 0}
+--- !u!114 &-1692386989708982084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2871338760790716551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a329bea525f01ad4992d6095fabe51cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossEnemy: {fileID: 2871338760790716551}
+  Image: {fileID: 0}
 --- !u!50 &749860674783976931
 Rigidbody2D:
   serializedVersion: 4
