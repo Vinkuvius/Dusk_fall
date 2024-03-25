@@ -34,7 +34,7 @@ public class ProjectileBehavior : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Boss"))
         {
-            other.gameObject.GetComponent<BossEnemy>().health = GetComponent<BossEnemy>().health/2; 
+            other.gameObject.GetComponent<BossEnemy>().health -= 150; 
         }
 
         Destroy(gameObject);

@@ -13,7 +13,7 @@ public class BossEnemy : MonoBehaviour
     public int damage = 10;
 
     private Transform player; // Refererar till player's transform
-    public float health = 30; // Fiende HP
+    public float health = 300; // Fiende HP
     public float rayDistance;
     public bool isGround;
 
@@ -53,7 +53,7 @@ public class BossEnemy : MonoBehaviour
         timer1 += Time.deltaTime;
         if (timer1 > closingTimer1)
         {
-            timer1 = 0f;
+            timer1 = 0.2f;
             if (Vector3.Distance(transform.position, player.position) < attackRange)
             {
                 Shoot1();
@@ -63,7 +63,7 @@ public class BossEnemy : MonoBehaviour
         timer2 += Time.deltaTime;
         if (timer2 > closingTimer2)
         {
-            timer2 = 0f;
+            timer2 = 0.4f;
             if (Vector3.Distance(transform.position, player.position) < attackRange)
             {
                 Shoot2();
@@ -72,7 +72,7 @@ public class BossEnemy : MonoBehaviour
         timer3 += Time.deltaTime;
         if (timer3 > closingTimer3)
         {
-            timer3 = 0f;
+            timer3 = 0.6f;
             if (Vector3.Distance(transform.position, player.position) < attackRange)
             {
                 Shoot3();
