@@ -13,7 +13,7 @@ public class BossEnemy : MonoBehaviour
     public int damage = 10;
 
     private Transform player; // Refererar till player's transform
-    public float health = 300; // Fiende HP
+    public float health = 300f; // Fiende HP
     public float rayDistance;
     public bool isGround;
 

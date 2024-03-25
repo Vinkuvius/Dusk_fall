@@ -3,7 +3,7 @@ using UnityEngine;
 public class ProjectileBehavior : MonoBehaviour
 {
     public float Speed = 4.5f;
-    public float timeToDespawn = 1.5f;
+    public float timeToDespawn = 0.9f;
     public float time;
 
 
@@ -15,7 +15,7 @@ public class ProjectileBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.right * Time.deltaTime * Speed;
+        transform.position += transform.right * Time.deltaTime * Speed * 4;
         // States that when the timer of "timeToDespawn" reaches zero the projectile despawns
         if (time < 0f)
         {
@@ -34,7 +34,7 @@ public class ProjectileBehavior : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Boss"))
         {
-            other.gameObject.GetComponent<BossEnemy>().health -= 150; 
+            other.gameObject.GetComponent<BossEnemy>().health /=2; 
         }
 
         Destroy(gameObject);
