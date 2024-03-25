@@ -4445,6 +4445,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1692386989708982084, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
+      propertyPath: Image
+      value: 
+      objectReference: {fileID: 119024558}
     - target: {fileID: 2871338760790716551, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
       propertyPath: m_Name
       value: Boss
@@ -4503,7 +4507,7 @@ PrefabInstance:
       objectReference: {fileID: 228498088}
     - target: {fileID: 2871338760790716572, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
       propertyPath: health
-      value: 300
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 2871338760790716572, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
       propertyPath: offset
