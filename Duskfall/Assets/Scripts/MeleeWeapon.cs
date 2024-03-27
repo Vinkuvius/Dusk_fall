@@ -33,7 +33,7 @@ public class MeleeWeapon : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Boss"))
         {
-            other.gameObject.GetComponent<BossEnemy>().health -=5;
+            other.gameObject.GetComponent<BossEnemy>().health -=50f;
         }
 
         Destroy(gameObject);

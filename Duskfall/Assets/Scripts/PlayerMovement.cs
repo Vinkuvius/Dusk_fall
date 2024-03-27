@@ -1,27 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
+
 public class PlayerMovement : MonoBehaviour
 {
     public Transform character;
     public float moveSpeed = 5f;
     public float sprintSpeed = 30f;
     private Rigidbody2D rb;
-    public float dodgeForce = 15f;
-    float dodgeDirection = 0f;
+    public float dodgeAcceleration = 20f;
+    public float dodgeDeceleration = 10f;
+    private float currentDodgeVelocity = 0f;
+    private float dodgeDirection = 0f;
     public LayerMask groundLayer;
     public Transform groundcheck;
     bool isGrounded;
-    public bool isDoding;
+    public bool isDodging;
 
     private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
         animator = character.GetComponent<Animator>();
 
         if (animator != null)
@@ -30,6 +30,27 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+
+            // Check if the player was dodging before touching the ground
+            if (!Input.GetKey(KeyCode.Space))
+            {
+                isDodging = false;
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
+    }
     void Update()
     {
         // Player movement
@@ -41,7 +62,39 @@ public class PlayerMovement : MonoBehaviour
         // Sprinting
         float currentMoveSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : moveSpeed;
         Vector2 moveVelocity = moveDirection * currentMoveSpeed;
-        rb.velocity = new Vector2(moveVelocity.x, rb.velocity.y);
+
+        // Dodge movement
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isDodging)
+        {
+            isDodging = true;
+            dodgeDirection = horizontalInput;
+            currentDodgeVelocity = dodgeDirection * dodgeAcceleration;
+            Invoke("StopDodging", 0.3f); // Stop dodging after 0.3 seconds
+        }
+
+        // Update Rigidbody velocity with dodge velocity
+        rb.velocity = new Vector2(moveVelocity.x + currentDodgeVelocity, rb.velocity.y);
+
+        // Decelerate dodge movement when not dodging
+        if (!isDodging && isGrounded)
+        {
+            if (currentDodgeVelocity > 0)
+            {
+                currentDodgeVelocity -= dodgeDeceleration * Time.deltaTime;
+                if (currentDodgeVelocity < 0)
+                {
+                    currentDodgeVelocity = 0f;
+                }
+            }
+            else if (currentDodgeVelocity < 0)
+            {
+                currentDodgeVelocity += dodgeDeceleration * Time.deltaTime;
+                if (currentDodgeVelocity > 0)
+                {
+                    currentDodgeVelocity = 0f;
+                }
+            }
+        }
 
         // Set animation based on movement
         if (animator != null)
@@ -80,39 +133,12 @@ public class PlayerMovement : MonoBehaviour
                     animator.SetBool("IsJumping", false); // Set the "IsJumping" parameter to false
                 }
             }
-
-            // Dodge
-            if (horizontalInput > 0) // Moving right
-            {
-                dodgeDirection = 8f; // Dodge right
-            }
-            else if (horizontalInput < 0) // Moving left
-            {
-                dodgeDirection = -8f; // Dodge left
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded == false)
-            {
-                rb.velocity = new Vector2(dodgeDirection * dodgeForce, rb.velocity.y);
-            }
         }
-
     }
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            if (other.gameObject.CompareTag("Ground"))
-            {
-                isDoding = false;
-                isGrounded = true;
-            }
-        }
 
-        private void OnCollisionExit2D(Collision2D other)
-        {
-            if (other.gameObject.CompareTag("Ground"))
-            {
-                isDoding = true;
-                isGrounded = false;
-            }
-        }
+    void StopDodging()
+    {
+        isDodging = false;
+    }
+
 }
