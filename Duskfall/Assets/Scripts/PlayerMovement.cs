@@ -12,10 +12,13 @@ public class PlayerMovement : MonoBehaviour
     public float dodgeDeceleration = 10f;
     private float currentDodgeVelocity = 0f;
     private float dodgeDirection = 0f;
+    public float dodgeDistance = 5f;
+    private float remainingDodgeDistance = 0f;
     public LayerMask groundLayer;
     public Transform groundcheck;
     bool isGrounded;
     public bool isDodging;
+
 
     private Animator animator;
 
@@ -34,13 +37,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
+            isDodging = false;
             isGrounded = true;
-
-            // Check if the player was dodging before touching the ground
-            if (!Input.GetKey(KeyCode.Space))
-            {
-                isDodging = false;
-            }
         }
     }
 
@@ -48,9 +46,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
+            isDodging = true;
             isGrounded = false;
         }
     }
+
     void Update()
     {
         // Player movement
@@ -69,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
             isDodging = true;
             dodgeDirection = horizontalInput;
             currentDodgeVelocity = dodgeDirection * dodgeAcceleration;
+            remainingDodgeDistance = dodgeDistance;
             Invoke("StopDodging", 0.3f); // Stop dodging after 0.3 seconds
         }
 
@@ -93,6 +94,16 @@ public class PlayerMovement : MonoBehaviour
                 {
                     currentDodgeVelocity = 0f;
                 }
+            }
+        }
+
+        // Update remaining dodge distance
+        if (isDodging)
+        {
+            remainingDodgeDistance -= Mathf.Abs(currentDodgeVelocity) * Time.deltaTime;
+            if (remainingDodgeDistance <= 0)
+            {
+                StopDodging();
             }
         }
 
@@ -139,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
     void StopDodging()
     {
         isDodging = false;
+        remainingDodgeDistance = 0f;
+        currentDodgeVelocity = 0f; // Remove all momentum
     }
-
 }

@@ -4810,7 +4810,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645086613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.22, y: 8.39, z: -10}
+  m_LocalPosition: {x: 5.16, y: 8.34, z: -10}
   m_LocalScale: {x: 76.5, y: 0.625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5548,6 +5548,10 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7083784314652316496, guid: bbf1fca22ef85a54cba9d7c3abbc2206, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083784314652316496, guid: bbf1fca22ef85a54cba9d7c3abbc2206, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -5586,11 +5590,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596991290282419020, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.09
+      value: -8.16
       objectReference: {fileID: 0}
     - target: {fileID: 2596991290282419020, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.42
+      value: 3.26
       objectReference: {fileID: 0}
     - target: {fileID: 2596991290282419020, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5649,12 +5653,20 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2596991290282419025, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
+      propertyPath: dodgeDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596991290282419025, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
+      propertyPath: maxDodgeDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596991290282419025, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: dodgeAcceleration
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2596991290282419025, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: dodgeDeceleration
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2596991290282419025, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: groundLayer.m_Bits
