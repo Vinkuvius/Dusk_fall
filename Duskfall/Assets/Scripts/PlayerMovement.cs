@@ -130,6 +130,10 @@ public class PlayerMovement : MonoBehaviour
                     animator.SetBool("IsFalling", true); // Set the "IsFalling" parameter to true to trigger the fall animation
                 }
             }
+            if (isGrounded)
+            {
+                animator.SetBool("Character1Idle", true);
+            }
             else
             {
                 animator.SetBool("IsFalling", false); // Set the "IsFalling" parameter to false

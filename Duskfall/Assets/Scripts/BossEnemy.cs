@@ -101,7 +101,7 @@ public class BossEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealth>().currentHealth -= 60;
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(60);
         }
     }
 }
