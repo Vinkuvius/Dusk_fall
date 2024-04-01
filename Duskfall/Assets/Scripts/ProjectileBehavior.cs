@@ -32,11 +32,34 @@ public class ProjectileBehavior : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+        //else if (other.gameObject.CompareTag("Boss"))
+        //{
+        //    other.gameObject.GetComponent<BossEnemy>();
+        //    if (other.gameObject.GetComponent<BossEnemy>() != null)
+        //    {
+        //        other.gameObject.GetComponent<BossEnemy>().PlaySound(hurtSound);
+        //    }
+        //    other.gameObject.GetComponent<BossEnemy>().health /=2;
+        //}
         else if (other.gameObject.CompareTag("Boss"))
         {
-            other.gameObject.GetComponent<BossEnemy>().health /=2; 
-        }
+            BossEnemy bossEnemy = other.gameObject.GetComponent<BossEnemy>();
 
-        Destroy(gameObject);
+            if (bossEnemy != null)
+            {
+                // Access the hurtSound property from the BossEnemy component
+                AudioClip bossHurtSound = bossEnemy.hurtSound;
+
+                // Check if the bossHurtSound is not null before playing
+                if (bossHurtSound != null)
+                {
+                    bossEnemy.PlaySound(bossHurtSound); // Play the hurt sound
+                }
+
+                bossEnemy.health /= 2;
+            }
+
+            Destroy(gameObject);
+        }
     }
 }

@@ -29,13 +29,27 @@ public class MeleeWeapon : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<EnemyStuff>().health -=10;
+            other.gameObject.GetComponent<EnemyStuff>().health -= 10;
         }
         else if (other.gameObject.CompareTag("Boss"))
         {
-            other.gameObject.GetComponent<BossEnemy>().health -=50f;
-        }
+            BossEnemy bossEnemy = other.gameObject.GetComponent<BossEnemy>();
 
-        Destroy(gameObject);
+            if (bossEnemy != null)
+            {
+                // Access the hurtSound property from the BossEnemy component
+                AudioClip bossHurtSound = bossEnemy.hurtSound;
+
+                // Check if the bossHurtSound is not null before playing
+                if (bossHurtSound != null)
+                {
+                    bossEnemy.PlaySound(bossHurtSound); // Play the hurt sound
+                }
+
+                bossEnemy.health -= 50;
+            }
+
+            Destroy(gameObject);
+        }
     }
 }

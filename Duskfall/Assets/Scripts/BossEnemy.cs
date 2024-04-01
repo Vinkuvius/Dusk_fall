@@ -11,9 +11,13 @@ public class BossEnemy : MonoBehaviour
     public float moveSpeed = 0.5f; // Hastigheten som fienden rör sig på
     public float attackRange = 5f; // Attackavståndet
     public int damage = 10;
+    public AudioClip IceGolemWalk;
+    public AudioClip hurtSound;
+    public AudioClip defeatSound;
 
     private Transform player; // Refererar till player's transform
     public float health = 300f; // Fiende HP
+    private AudioSource audioSource;
     public float rayDistance;
     public bool isGround;
 
@@ -27,9 +31,13 @@ public class BossEnemy : MonoBehaviour
     //public static Weapon Instance;
     public EnemyProjectile Projectile;
     public WinCondition Win;
+    private Vector2 lastPosition; // Variable to store the position of the enemy in the previous frame
+    public float moveThreshold = 0.1f;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; // Finds player
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -40,8 +48,9 @@ public class BossEnemy : MonoBehaviour
         {
             // Boss is dead, calls the win condition script
             Win.CheckWinCondition();
+            PlaySound(defeatSound);
             // Destroys the boss
-            Destroy(gameObject);
+            Invoke("DestroyBoss", 3.0f);
         }
 
         if (Vector3.Distance(transform.position, player.position) <= 15)
@@ -78,6 +87,11 @@ public class BossEnemy : MonoBehaviour
                 Shoot3();
             }
         }
+
+        if (isMoving())
+        {
+            PlaySound(IceGolemWalk);
+        }
     }
 
     void Shoot1()
@@ -103,5 +117,28 @@ public class BossEnemy : MonoBehaviour
         {
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(60);
         }
+    }
+
+    public bool isMoving()
+    {
+        Vector2 currentPosition = transform.position;
+        float distanceMoved = Vector2.Distance(currentPosition, lastPosition);
+
+        // Update the lastPosition for the next frame
+        lastPosition = currentPosition;
+
+        // If the distance moved is greater than a small threshold, consider the enemy as moving
+        return distanceMoved > moveThreshold;
+    }
+    public void PlaySound(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+                audioSource.PlayOneShot(clip);
+        }
+    }
+    void DestroyBoss()
+    {
+        Destroy(gameObject);
     }
 }

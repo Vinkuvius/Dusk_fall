@@ -35,9 +35,23 @@ public class FireBallSpell : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Boss"))
         {
-            other.gameObject.GetComponent<BossEnemy>().health -= 45.5f;
-        }
+            BossEnemy bossEnemy = other.gameObject.GetComponent<BossEnemy>();
 
-        Destroy(gameObject);
+            if (bossEnemy != null)
+            {
+                // Access the hurtSound property from the BossEnemy component
+                AudioClip bossHurtSound = bossEnemy.hurtSound;
+
+                // Check if the bossHurtSound is not null before playing
+                if (bossHurtSound != null)
+                {
+                    bossEnemy.PlaySound(bossHurtSound); // Play the hurt sound
+                }
+
+                bossEnemy.health -= 45.5f;
+            }
+
+            Destroy(gameObject);
+        }
     }
 }
