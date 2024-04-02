@@ -10,6 +10,7 @@ public class EnemyStuff : MonoBehaviour
     public float moveSpeed = 3f; // Movementspeed of enemy
     public float health = 50f; // Enemy Health points
     public float rayDistance;
+    
 
     public int damage = 20;
 
@@ -18,7 +19,7 @@ public class EnemyStuff : MonoBehaviour
     private Transform player; // Referencing to player's transform
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform; // Hittar player 
+        player = GameObject.FindGameObjectWithTag("Player").transform; // Hittar player
     }
 
     void Update()

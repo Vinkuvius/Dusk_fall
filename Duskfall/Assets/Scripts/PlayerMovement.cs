@@ -70,10 +70,15 @@ public class PlayerMovement : MonoBehaviour
             dodgeDirection = horizontalInput;
             currentDodgeVelocity = dodgeDirection * dodgeAcceleration;
             remainingDodgeDistance = dodgeDistance;
-            Invoke("StopDodging", 0.3f); // Stop dodging after 0.3 seconds
+            Invoke("StopDodging", 0.5f); // Stop dodging after 0.3 seconds
         }
 
         // Update Rigidbody velocity with dodge velocity
+        float lookDir = Mathf.Sign(moveVelocity.x);
+        var scale = transform.localScale;
+        scale.x = lookDir;
+        transform.localScale = scale;
+
         rb.velocity = new Vector2(moveVelocity.x + currentDodgeVelocity, rb.velocity.y);
 
         // Decelerate dodge movement when not dodging
@@ -106,6 +111,13 @@ public class PlayerMovement : MonoBehaviour
                 StopDodging();
             }
         }
+
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    animator.Play("Jump", 0, 0);
+        //}
+
+
 
         // Set animation based on movement
         if (animator != null)

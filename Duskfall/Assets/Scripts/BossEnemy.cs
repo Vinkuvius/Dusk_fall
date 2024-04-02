@@ -44,6 +44,7 @@ public class BossEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (health <= 0)
         {
             // Boss is dead, calls the win condition script

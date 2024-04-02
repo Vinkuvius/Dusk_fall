@@ -20,12 +20,12 @@ public class PlayerJump : MonoBehaviour
         //Jumping ability
         if (Input.GetKeyDown(KeyCode.W) && isJumping == false)
         {
-            rb.AddForce(new Vector2(rb.velocity.x, jump));
+            rb.AddForce(new Vector2(rb.velocity.y, jump));
         }
 
         if (Input.GetKeyDown(KeyCode.S) && isJumping == true)
         {
-            rb.AddForce(new Vector2 (rb.velocity.x, fall));
+            rb.AddForce(new Vector2 (rb.velocity.y, fall));
         }
     }
 
