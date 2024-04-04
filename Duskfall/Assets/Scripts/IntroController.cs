@@ -24,7 +24,7 @@ public class IntroController : MonoBehaviour
         // Start the running animation
         if (animator != null)
         {
-            animator.SetBool("Character1Run", true); // Set the "Character1Run" parameter to true to trigger the running animation
+            animator.SetBool("IsRunning", true); // Set the "IsRunning" parameter to true to trigger the running animation
         }
     }
 
@@ -47,11 +47,5 @@ public class IntroController : MonoBehaviour
     {
         // Reset the character's position to the starting position
         character.position = startPosition;
-
-        // Stop the running animation
-        if (animator != null)
-        {
-            animator.SetBool("Character1Run", false); // Set the "Character1Run" parameter to false to stop the running animation
-        }
     }
 }
