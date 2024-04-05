@@ -20,13 +20,15 @@ public class MeleeAtk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (!PauseMenu.isPaused)
         {
-            rend.enabled = true;
-            animator.SetBool("IsAttacking", true);
-            StartCoroutine(DeactivateAfterDely(0.5f));
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                rend.enabled = true;
+                animator.SetBool("IsAttacking", true);
+                StartCoroutine(DeactivateAfterDely(0.5f));
+            }
         }
-        
     }
 
     public void attack()

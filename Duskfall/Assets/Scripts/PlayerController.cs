@@ -17,23 +17,22 @@ public class PlayerController : MonoBehaviour
     private bool ToGo = true;
     void Update()
     {
-
-
-        if (Input.GetMouseButtonDown(0) && canFire)
+        if (!PauseMenu.isPaused)
         {
-            Instantiate(ProjectilePrefab, Launcher.position, transform.rotation);
-            StartCoroutine(ShootWithCooldown());
-            Debug.Log("Ultimate Move: Abyssal Void Collapse");
+            if (Input.GetMouseButtonDown(0) && canFire)
+            {
+                Instantiate(ProjectilePrefab, Launcher.position, transform.rotation);
+                StartCoroutine(ShootWithCooldown());
+                Debug.Log("Ultimate Move: Abyssal Void Collapse");
+            }
+            if (Input.GetKeyDown(KeyCode.F) && ToGo)
+            {
+                Instantiate(FireBallSpellPrefab, FireBallLuanch.position, transform.rotation);
+                Instantiate(FireBallSpellPrefab, FireBallLuanch2.position, transform.rotation);
+                StartCoroutine(MagicBeluga());
+                Debug.Log("Fireball");
+            }
         }
-        if (Input.GetKeyDown(KeyCode.F) && ToGo)
-        {
-            Instantiate(FireBallSpellPrefab, FireBallLuanch.position, transform.rotation);
-            Instantiate(FireBallSpellPrefab, FireBallLuanch2.position, transform.rotation);
-            StartCoroutine(MagicBeluga());
-            Debug.Log("Fireball");
-        }
-
-
     }
 
     IEnumerator ShootWithCooldown()

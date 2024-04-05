@@ -25,22 +25,14 @@ public class ProjectileBehavior : MonoBehaviour
         time -= Time.deltaTime;
     }
 
-    //This is meant to be a insta kill move, dot mess with it
+    //This is meant to be a insta kill move, don't mess with it
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             Destroy(other.gameObject);
         }
-        //else if (other.gameObject.CompareTag("Boss"))
-        //{
-        //    other.gameObject.GetComponent<BossEnemy>();
-        //    if (other.gameObject.GetComponent<BossEnemy>() != null)
-        //    {
-        //        other.gameObject.GetComponent<BossEnemy>().PlaySound(hurtSound);
-        //    }
-        //    other.gameObject.GetComponent<BossEnemy>().health /=2;
-        //}
+
         else if (other.gameObject.CompareTag("Boss"))
         {
             BossEnemy bossEnemy = other.gameObject.GetComponent<BossEnemy>();
