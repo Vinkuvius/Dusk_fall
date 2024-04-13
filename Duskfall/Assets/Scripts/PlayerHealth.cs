@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public int damage = 10;
+    public LoseCondition Lose;
 
     private void Start()
     {
@@ -33,7 +34,8 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Lose.CheckLoseCondition();
+            gameObject.SetActive(false);
         }
         if (currentHealth >= 100)
         {
