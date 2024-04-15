@@ -13,7 +13,7 @@ public class WinCondition : MonoBehaviour
         // Win condition meets, does the necessary conditions
         Debug.Log("You have defeated the demons that had invaded earth! Well done!");
         Image.ActivateVictoryScreen();
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
 
     }
 }
