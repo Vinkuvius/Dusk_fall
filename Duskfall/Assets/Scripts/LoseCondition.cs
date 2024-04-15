@@ -14,7 +14,6 @@ public class LoseCondition : MonoBehaviour
         // Lose condition is met, does the necessary conditions
         Debug.Log("The demonic beings on Tellus fractured you.");
         Image.ActivateLoseScreen();
-        Image.AcivateLoseMenu();
         //Time.timeScale = 0f;
     }
 
