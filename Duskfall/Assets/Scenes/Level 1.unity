@@ -3254,7 +3254,7 @@ GameObject:
   - component: {fileID: 651808764}
   - component: {fileID: 651808767}
   - component: {fileID: 651808766}
-  - component: {fileID: 651808765}
+  - component: {fileID: 651808768}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -3283,18 +3283,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 117.64}
   m_SizeDelta: {x: 0, y: 235.28}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &651808765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 651808763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 349ce31f145945d459f40d8ec635e378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &651808766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3333,6 +3321,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651808763}
   m_CullTransparentMesh: 1
+--- !u!114 &651808768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651808763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a329bea525f01ad4992d6095fabe51cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossEnemy: {fileID: 1191679876}
+  Image: {fileID: 891124288}
 --- !u!1 &657715122
 GameObject:
   m_ObjectHideFlags: 0
@@ -4437,6 +4439,7 @@ GameObject:
   - component: {fileID: 891124286}
   - component: {fileID: 891124285}
   - component: {fileID: 891124284}
+  - component: {fileID: 891124288}
   m_Layer: 5
   m_Name: Victory screen
   m_TagString: Untagged
@@ -4526,6 +4529,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &891124288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891124283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349ce31f145945d459f40d8ec635e378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &903102591
 GameObject:
   m_ObjectHideFlags: 0
@@ -9444,7 +9459,7 @@ PrefabInstance:
     - target: {fileID: -1692386989708982084, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
       propertyPath: Image
       value: 
-      objectReference: {fileID: 651808765}
+      objectReference: {fileID: 891124288}
     - target: {fileID: 2871338760790716551, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
       propertyPath: m_Name
       value: Boss
@@ -9510,6 +9525,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2871338760790716572, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
+      propertyPath: Winner
+      value: 
+      objectReference: {fileID: 651808768}
+    - target: {fileID: 2871338760790716572, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
       propertyPath: health
       value: 1305.3
       objectReference: {fileID: 0}
@@ -9565,7 +9584,8 @@ PrefabInstance:
       propertyPath: moveThreshold
       value: 0.1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1692386989708982084, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 14055afcce2c3d74786470546dcc4011, type: 3}
 --- !u!1 &1626427417
 GameObject:
@@ -13011,11 +13031,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596991290282419020, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5
+      value: 197.54
       objectReference: {fileID: 0}
     - target: {fileID: 2596991290282419020, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 9.2
       objectReference: {fileID: 0}
     - target: {fileID: 2596991290282419020, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13064,6 +13084,10 @@ PrefabInstance:
     - target: {fileID: 2596991290282419022, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: timer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596991290282419022, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
+      propertyPath: maxHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2596991290282419022, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: closingTimer

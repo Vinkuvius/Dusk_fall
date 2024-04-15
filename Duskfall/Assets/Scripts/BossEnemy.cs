@@ -33,6 +33,7 @@ public class BossEnemy : MonoBehaviour
     private Vector2 lastPosition; // Variable to store the position of the enemy in the previous frame
     public float moveThreshold = 0.1f;
     public LevelLoader levelmenu;
+    public WinCondition Winner;
 
     void Start()
     {
@@ -47,8 +48,7 @@ public class BossEnemy : MonoBehaviour
 
         if (health <= 0)
         {
-            // Boss is dead, calls the win condition script
-            levelmenu.NextLevel();
+            Winner.CheckWinCondition();
             PlaySound(defeatSound);
             // Destroys the boss
             Invoke("DestroyBoss", 3.0f);
@@ -141,10 +141,5 @@ public class BossEnemy : MonoBehaviour
     void DestroyBoss()
     {
         Destroy(gameObject);
-    }
-
-    public void QuitGame()
-    {
-        levelmenu.QuitGame();
     }
 }
