@@ -33,6 +33,11 @@ public class ProjectileBehavior : MonoBehaviour
             Destroy(other.gameObject);
         }
 
+        else if (other.gameObject.CompareTag("Crow"))
+        {
+            Destroy(other.gameObject);
+        }
+
         else if (other.gameObject.CompareTag("Boss"))
         {
             BossEnemy bossEnemy = other.gameObject.GetComponent<BossEnemy>();

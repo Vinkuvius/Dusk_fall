@@ -61,6 +61,10 @@ public class MeleeAtk : MonoBehaviour
             {
                 Enemy1.gameObject.GetComponent<EnemyStuff>().health -= 15f;
             }
+            else if (Enemy1.gameObject.CompareTag("Crow"))
+            {
+                Enemy1.gameObject.GetComponent<Crow>().currentHealth -= 7;
+            }
             else if (Enemy1.gameObject.CompareTag("Boss"))
             {
                 Enemy1.gameObject.GetComponent<BossEnemy>().health -= 70f;

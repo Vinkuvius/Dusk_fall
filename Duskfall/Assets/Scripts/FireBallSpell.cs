@@ -34,6 +34,11 @@ public class FireBallSpell : MonoBehaviour
             other.gameObject.GetComponent<EnemyStuff>().health -= 7.5f;
             Destroy(gameObject);
         }
+        else if (other.gameObject.CompareTag("Crow"))
+        {
+            other.gameObject.GetComponent<Crow>().currentHealth -= 5;
+            Destroy(gameObject);
+        }
         else if (other.gameObject.CompareTag("Boss"))
         {
             BossEnemy bossEnemy = other.gameObject.GetComponent<BossEnemy>();
