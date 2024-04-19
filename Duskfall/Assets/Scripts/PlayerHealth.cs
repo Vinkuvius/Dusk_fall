@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -12,11 +14,13 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public int damage = 10;
     public LoseCondition Lose;
+    public Slider slider;
 
     private void Start()
     {
         // Makes so that currentHealth is the same as maxHealth at the start
         currentHealth = maxHealth;
+        slider.value = currentHealth;
     }
     public void Update()
     {
@@ -28,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
                 RegenHealth();
             }
         }
+        slider.value = currentHealth;
     }
     public void TakeDamage(int damage)
     {

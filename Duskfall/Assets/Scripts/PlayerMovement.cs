@@ -40,11 +40,21 @@ public class PlayerMovement : MonoBehaviour
             isDodging = false;
             isGrounded = true;
         }
+        else if (other.gameObject.CompareTag("Enemy"))
+        {
+            isDodging = false;
+            isGrounded = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
+        {
+            isDodging = true;
+            isGrounded = false;
+        }
+        else if (other.gameObject.CompareTag("Enemy"))
         {
             isDodging = true;
             isGrounded = false;

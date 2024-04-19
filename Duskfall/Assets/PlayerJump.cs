@@ -50,7 +50,7 @@ public class PlayerJump : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
-            isJumping = false;
+            isJumping = true;
         }
     }   
 }

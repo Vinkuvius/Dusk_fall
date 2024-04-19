@@ -15,4 +15,10 @@ public class LevelLoader : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void GoToMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Main Menu");
+    }
 }
