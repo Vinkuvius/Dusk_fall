@@ -14,6 +14,7 @@ public class CameraFollow : MonoBehaviour
     public float maxY;
     void Update()
     {
+
         // Calculates the position you want for the camera
         Vector3 desiredPosition = target.position + offset;
 

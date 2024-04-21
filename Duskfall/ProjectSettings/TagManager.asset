@@ -11,6 +11,7 @@ TagManager:
   - DropPoint
   - Boss
   - Crow
+  - Boss2
   layers:
   - Default
   - TransparentFX

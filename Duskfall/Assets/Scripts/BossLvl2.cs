@@ -6,8 +6,8 @@ public class BossLvl2 : MonoBehaviour
 {
     public Transform bulletShootPoint1;
     public LayerMask GroundLayer;
-    public float moveSpeed = 1f;
-    public float attackRange = 6.5f;
+    public float moveSpeed = 7.5f;
+    public float attackRange = 25f;
     public int damage = 10;
     public AudioClip IceGolemWalk;
     public AudioClip hurtSound;
@@ -44,7 +44,7 @@ public class BossLvl2 : MonoBehaviour
             house.gameObject.SetActive(true);
         }
 
-        if (Vector3.Distance(transform.position, player.position) <= 15)
+        if (Vector3.Distance(transform.position, player.position) <= 55)
         {
             transform.position = Vector3.MoveTowards(transform.position,
             player.position,

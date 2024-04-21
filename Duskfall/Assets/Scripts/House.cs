@@ -11,7 +11,7 @@ public class House : MonoBehaviour
     void Update()
     {
         // Check if the player presses the "Q" key and the game is not already won
-        if (!isGameWon && Input.GetKeyDown(KeyCode.Q))
+        if (!isGameWon)
         {
             // Check if the player is colliding with the house
             Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, transform.localScale, 0);

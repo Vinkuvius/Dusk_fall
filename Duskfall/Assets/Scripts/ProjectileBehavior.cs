@@ -58,5 +58,25 @@ public class ProjectileBehavior : MonoBehaviour
 
             Destroy(gameObject);
         }
+        else if (other.gameObject.CompareTag("Boss2"))
+        {
+            BossLvl2 Boss2 = other.gameObject.GetComponent<BossLvl2>();
+
+            if (Boss2 != null)
+            {
+                // Access the hurtSound property from the BossEnemy component
+                AudioClip bossHurtSound = Boss2.hurtSound;
+
+                // Check if the bossHurtSound is not null before playing
+                if (bossHurtSound != null)
+                {
+                    Boss2.PlaySound(bossHurtSound); // Play the hurt sound
+                }
+
+                Boss2.health /= 2;
+            }
+
+            Destroy(gameObject);
+        }
     }
 }
