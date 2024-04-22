@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
             dodgeDirection = horizontalInput;
             currentDodgeVelocity = dodgeDirection * dodgeAcceleration;
             remainingDodgeDistance = dodgeDistance;
-            Invoke("StopDodging", 0.5f); // Stop dodging after 0.3 seconds
+            Invoke("StopDodging", 0.5f); // Stop dodging after 0.5 seconds
         }
 
         // Update Rigidbody velocity with dodge velocity

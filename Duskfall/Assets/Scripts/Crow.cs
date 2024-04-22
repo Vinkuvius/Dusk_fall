@@ -8,7 +8,15 @@ public class Crow : MonoBehaviour
     public float detectionRange = 10f;
     public int maxHealth = 10;
     public  int currentHealth;
-    public Transform player; 
+    public Transform player;
+
+    public AudioClip walkSound;
+    public AudioClip hurtSound;
+    public AudioClip defeatSound;
+    private AudioSource audioSource;
+
+    private Vector2 lastPosition;
+    public float moveThreshold = 0.1f;
 
     private Rigidbody2D rb;
     private Vector2 movementDirection;
@@ -21,6 +29,7 @@ public class Crow : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -31,6 +40,37 @@ public class Crow : MonoBehaviour
             movementDirection = (player.position - transform.position).normalized;
             rb.MovePosition(rb.position + movementDirection * moveSpeed * Time.fixedDeltaTime);
         }
+
+        if (currentHealth <= 0)
+        {
+            PlaySound(defeatSound);
+            Invoke("DestroyEnemy", 1.0f);
+        }
+
+        if (isMoving())
+        {
+            PlaySound(walkSound);
+        }
+    }
+    public bool isMoving()
+    {
+        Vector2 currentPosition = transform.position;
+        float distanceMoved = Vector2.Distance(currentPosition, lastPosition);
+        lastPosition = currentPosition;
+        return distanceMoved > moveThreshold;
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
+
+    void DestroyEnemy()
+    {
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,19 +79,5 @@ public class Crow : MonoBehaviour
         {
             GetComponent<PlayerHealth>().currentHealth -= 5;
         }
-    }
-
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        Destroy(gameObject);
     }
 }

@@ -552,7 +552,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35701280}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.319, y: -0.002, z: 0}
+  m_LocalPosition: {x: 0.31899968, y: -0.0020000024, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1412,7 +1412,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334829773}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.954, y: -0.002, z: 0}
+  m_LocalPosition: {x: 0.95400053, y: -0.0020000024, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1496,7 +1496,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368926543}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.636, y: -0.002, z: 0}
+  m_LocalPosition: {x: 0.6360006, y: -0.0020000024, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2388,6 +2388,7 @@ GameObject:
   - component: {fileID: 527020942}
   - component: {fileID: 527020941}
   - component: {fileID: 527020940}
+  - component: {fileID: 527020944}
   m_Layer: 0
   m_Name: Crow (2)
   m_TagString: Crow
@@ -2427,6 +2428,10 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
+  walkSound: {fileID: 8300000, guid: 16bb26916783ea74c8946e131ad17ee0, type: 3}
+  hurtSound: {fileID: 8300000, guid: 4a768436cc9a9874eb5fd06529daa093, type: 3}
+  defeatSound: {fileID: 8300000, guid: 7ab1a921a0534f049816db85a68397c4, type: 3}
+  moveThreshold: 0.1
 --- !u!50 &527020941
 Rigidbody2D:
   serializedVersion: 4
@@ -2526,6 +2531,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &527020944
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527020938}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e440e6331b260ae41b318349c6e6780a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &537030601
 GameObject:
   m_ObjectHideFlags: 0
@@ -2623,6 +2648,7 @@ GameObject:
   - component: {fileID: 576411945}
   - component: {fileID: 576411944}
   - component: {fileID: 576411943}
+  - component: {fileID: 576411947}
   m_Layer: 0
   m_Name: Crow (3)
   m_TagString: Crow
@@ -2662,6 +2688,10 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
+  walkSound: {fileID: 8300000, guid: 16bb26916783ea74c8946e131ad17ee0, type: 3}
+  hurtSound: {fileID: 8300000, guid: 4a768436cc9a9874eb5fd06529daa093, type: 3}
+  defeatSound: {fileID: 8300000, guid: 7ab1a921a0534f049816db85a68397c4, type: 3}
+  moveThreshold: 0.1
 --- !u!50 &576411944
 Rigidbody2D:
   serializedVersion: 4
@@ -2761,6 +2791,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &576411947
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576411941}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e440e6331b260ae41b318349c6e6780a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &583776446
 GameObject:
   m_ObjectHideFlags: 0
@@ -3207,6 +3257,7 @@ GameObject:
   - component: {fileID: 703517971}
   - component: {fileID: 703517970}
   - component: {fileID: 703517969}
+  - component: {fileID: 703517973}
   m_Layer: 0
   m_Name: Crow (1)
   m_TagString: Crow
@@ -3246,6 +3297,10 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
+  walkSound: {fileID: 8300000, guid: 16bb26916783ea74c8946e131ad17ee0, type: 3}
+  hurtSound: {fileID: 8300000, guid: 4a768436cc9a9874eb5fd06529daa093, type: 3}
+  defeatSound: {fileID: 8300000, guid: 7ab1a921a0534f049816db85a68397c4, type: 3}
+  moveThreshold: 0.1
 --- !u!50 &703517970
 Rigidbody2D:
   serializedVersion: 4
@@ -3345,6 +3400,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &703517973
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703517967}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e440e6331b260ae41b318349c6e6780a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &707215925
 GameObject:
   m_ObjectHideFlags: 0
@@ -4111,7 +4186,7 @@ Transform:
   m_GameObject: {fileID: 863037868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.8760352, y: -0.024979912, z: 0}
-  m_LocalScale: {x: 1.9945204, y: 1.378096, z: 1}
+  m_LocalScale: {x: 1.9945203, y: 1.378096, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1275641926}
@@ -4482,6 +4557,31 @@ Transform:
   m_Father: {fileID: 970477387}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &938227411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6698577578257083171, guid: 7335f6dae5c51874380978176c6981c4, type: 3}
+  m_PrefabInstance: {fileID: 6698577578757692091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &938227418
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938227411}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5eff86eb7dd131244bf27fa55718c982, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &943852763
 GameObject:
   m_ObjectHideFlags: 0
@@ -4596,7 +4696,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 958957240}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.477, y: -0.002, z: 0}
+  m_LocalPosition: {x: 0.47700062, y: -0.0020000024, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5121,10 +5221,62 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5507623955340656720, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507623955340656720, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507623955340656720, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 524
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507623955340656720, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507623955570927925, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507623955570927925, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507623955570927925, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -300
+      objectReference: {fileID: 0}
     - target: {fileID: 5507623956054931600, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 1448374365}
+    - target: {fileID: 5507623956174516287, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507623956174516287, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507623956347504082, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507623956347504082, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507623956347504082, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -524
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507623956347504082, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 5507623956480708401, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5213,6 +5365,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lose Screen
       objectReference: {fileID: 0}
+    - target: {fileID: 5507623956480708405, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507623957133594825, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507623957133594825, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507623957265582940, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_fontSize
+      value: 144
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507623957265582940, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 144
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ec9155ac712be7489b419e7150400bf, type: 3}
 --- !u!1 &1071047209
@@ -5228,6 +5400,7 @@ GameObject:
   - component: {fileID: 1071047213}
   - component: {fileID: 1071047212}
   - component: {fileID: 1071047211}
+  - component: {fileID: 1071047215}
   m_Layer: 0
   m_Name: Crow (1)
   m_TagString: Crow
@@ -5270,6 +5443,10 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
+  walkSound: {fileID: 8300000, guid: 16bb26916783ea74c8946e131ad17ee0, type: 3}
+  hurtSound: {fileID: 8300000, guid: 4a768436cc9a9874eb5fd06529daa093, type: 3}
+  defeatSound: {fileID: 8300000, guid: 7ab1a921a0534f049816db85a68397c4, type: 3}
+  moveThreshold: 0.1
 --- !u!50 &1071047212
 Rigidbody2D:
   serializedVersion: 4
@@ -5369,6 +5546,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1071047215
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071047209}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e440e6331b260ae41b318349c6e6780a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1076209141
 GameObject:
   m_ObjectHideFlags: 0
@@ -5382,6 +5579,7 @@ GameObject:
   - component: {fileID: 1076209145}
   - component: {fileID: 1076209144}
   - component: {fileID: 1076209143}
+  - component: {fileID: 1076209147}
   m_Layer: 0
   m_Name: Crow (2)
   m_TagString: Crow
@@ -5421,6 +5619,10 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
+  walkSound: {fileID: 8300000, guid: 16bb26916783ea74c8946e131ad17ee0, type: 3}
+  hurtSound: {fileID: 8300000, guid: 4a768436cc9a9874eb5fd06529daa093, type: 3}
+  defeatSound: {fileID: 8300000, guid: 7ab1a921a0534f049816db85a68397c4, type: 3}
+  moveThreshold: 0.1
 --- !u!50 &1076209144
 Rigidbody2D:
   serializedVersion: 4
@@ -5520,6 +5722,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1076209147
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076209141}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e440e6331b260ae41b318349c6e6780a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1085502770
 GameObject:
   m_ObjectHideFlags: 0
@@ -5533,6 +5755,7 @@ GameObject:
   - component: {fileID: 1085502773}
   - component: {fileID: 1085502772}
   - component: {fileID: 1085502771}
+  - component: {fileID: 1085502776}
   m_Layer: 0
   m_Name: Crow
   m_TagString: Crow
@@ -5557,6 +5780,10 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
+  walkSound: {fileID: 8300000, guid: 16bb26916783ea74c8946e131ad17ee0, type: 3}
+  hurtSound: {fileID: 8300000, guid: 4a768436cc9a9874eb5fd06529daa093, type: 3}
+  defeatSound: {fileID: 8300000, guid: 7ab1a921a0534f049816db85a68397c4, type: 3}
+  moveThreshold: 0.1
 --- !u!50 &1085502772
 Rigidbody2D:
   serializedVersion: 4
@@ -5675,6 +5902,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!95 &1085502776
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085502770}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e440e6331b260ae41b318349c6e6780a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1103478626
 GameObject:
   m_ObjectHideFlags: 0
@@ -5701,7 +5948,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103478626}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.21, y: -5.014, z: 2.251174}
+  m_LocalPosition: {x: -0.15, y: -5.014, z: 2.251174}
   m_LocalScale: {x: 1, y: 25.339348, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6280,6 +6527,7 @@ GameObject:
   - component: {fileID: 1243958816}
   - component: {fileID: 1243958815}
   - component: {fileID: 1243958814}
+  - component: {fileID: 1243958818}
   m_Layer: 0
   m_Name: Crow (3)
   m_TagString: Crow
@@ -6319,6 +6567,10 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
+  walkSound: {fileID: 8300000, guid: 16bb26916783ea74c8946e131ad17ee0, type: 3}
+  hurtSound: {fileID: 8300000, guid: 4a768436cc9a9874eb5fd06529daa093, type: 3}
+  defeatSound: {fileID: 8300000, guid: 7ab1a921a0534f049816db85a68397c4, type: 3}
+  moveThreshold: 0.1
 --- !u!50 &1243958815
 Rigidbody2D:
   serializedVersion: 4
@@ -6418,6 +6670,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1243958818
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243958812}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e440e6331b260ae41b318349c6e6780a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1275641925
 GameObject:
   m_ObjectHideFlags: 0
@@ -6443,7 +6715,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275641925}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.16, y: -0.002, z: 0}
+  m_LocalPosition: {x: 0.15999971, y: -0.0020000024, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6771,6 +7043,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1732220358496993906, guid: 0f34af9c667652742be869f57c24f31f, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732220359179897851, guid: 0f34af9c667652742be869f57c24f31f, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1732220359764960103, guid: 0f34af9c667652742be869f57c24f31f, type: 3}
@@ -7623,8 +7899,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601069818}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4777343, y: -0.18538386, z: 0}
-  m_LocalScale: {x: 0.4729577, y: 0.23505619, z: 1}
+  m_LocalPosition: {x: 0.4777348, y: -0.1853838, z: 0}
+  m_LocalScale: {x: 0.47295773, y: 0.23505616, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 863037869}
@@ -8115,6 +8391,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3698945332578189347, guid: b99e17c1e39a10e43a29957a10d35983, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698945332578189347, guid: b99e17c1e39a10e43a29957a10d35983, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 3698945332683393928, guid: b99e17c1e39a10e43a29957a10d35983, type: 3}
       propertyPath: m_Name
       value: Victory screen
@@ -8211,21 +8495,49 @@ PrefabInstance:
       propertyPath: m_text
       value: Back to main menu
       objectReference: {fileID: 0}
+    - target: {fileID: 3698945332915232263, guid: b99e17c1e39a10e43a29957a10d35983, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698945332915232263, guid: b99e17c1e39a10e43a29957a10d35983, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 3698945332947345843, guid: b99e17c1e39a10e43a29957a10d35983, type: 3}
       propertyPath: BossEnemy
       value: 
       objectReference: {fileID: 416822951}
     - target: {fileID: 3698945333158779549, guid: b99e17c1e39a10e43a29957a10d35983, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698945333158779549, guid: b99e17c1e39a10e43a29957a10d35983, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698945333158779549, guid: b99e17c1e39a10e43a29957a10d35983, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -353
+      value: -450
       objectReference: {fileID: 0}
     - target: {fileID: 3698945333158779550, guid: b99e17c1e39a10e43a29957a10d35983, type: 3}
       propertyPath: m_Name
       value: BackToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 3698945333755805621, guid: b99e17c1e39a10e43a29957a10d35983, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698945333755805621, guid: b99e17c1e39a10e43a29957a10d35983, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698945333755805621, guid: b99e17c1e39a10e43a29957a10d35983, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698945333755805621, guid: b99e17c1e39a10e43a29957a10d35983, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 23.800018
+      value: -150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b99e17c1e39a10e43a29957a10d35983, type: 3}
@@ -8338,7 +8650,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812220997}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.796, y: -0.002, z: 0}
+  m_LocalPosition: {x: 0.79599965, y: -0.0020000024, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8415,7 +8727,7 @@ PrefabInstance:
     - target: {fileID: 4191801679061229545, guid: 7cb1c4d887c3af54b92b8a2836575acc, type: 3}
       propertyPath: monsterTypes.Array.data[0].monsterPrefab
       value: 
-      objectReference: {fileID: 6698577578257083171, guid: 7335f6dae5c51874380978176c6981c4, type: 3}
+      objectReference: {fileID: 938227411}
     - target: {fileID: 4191801679061229546, guid: 7cb1c4d887c3af54b92b8a2836575acc, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -8758,6 +9070,7 @@ GameObject:
   - component: {fileID: 1957435864}
   - component: {fileID: 1957435863}
   - component: {fileID: 1957435862}
+  - component: {fileID: 1957435866}
   m_Layer: 0
   m_Name: Crow (1)
   m_TagString: Crow
@@ -8797,6 +9110,10 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
+  walkSound: {fileID: 8300000, guid: 16bb26916783ea74c8946e131ad17ee0, type: 3}
+  hurtSound: {fileID: 8300000, guid: 4a768436cc9a9874eb5fd06529daa093, type: 3}
+  defeatSound: {fileID: 8300000, guid: 7ab1a921a0534f049816db85a68397c4, type: 3}
+  moveThreshold: 0.1
 --- !u!50 &1957435863
 Rigidbody2D:
   serializedVersion: 4
@@ -8896,6 +9213,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1957435866
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957435860}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e440e6331b260ae41b318349c6e6780a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1961236234
 GameObject:
   m_ObjectHideFlags: 0
@@ -9239,11 +9576,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5849244911006712448, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.11
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 5849244911006712448, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5849244911006712448, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9298,6 +9635,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6698577578257083170, guid: 7335f6dae5c51874380978176c6981c4, type: 3}
+      propertyPath: hurtSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ccb6cb82ec50f77458c27c997d9f559d, type: 3}
+    - target: {fileID: 6698577578257083170, guid: 7335f6dae5c51874380978176c6981c4, type: 3}
+      propertyPath: walkSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 11eea401fb808884a9598416ec31a2fc, type: 3}
+    - target: {fileID: 6698577578257083170, guid: 7335f6dae5c51874380978176c6981c4, type: 3}
+      propertyPath: defeatSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ea6df40dc29ac74281be9d4832d39c6, type: 3}
     - target: {fileID: 6698577578257083171, guid: 7335f6dae5c51874380978176c6981c4, type: 3}
       propertyPath: m_Name
       value: Skeleton

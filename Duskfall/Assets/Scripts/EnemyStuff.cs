@@ -10,7 +10,13 @@ public class EnemyStuff : MonoBehaviour
     public float moveSpeed = 3f; // Movementspeed of enemy
     public float health = 50f; // Enemy Health points
     public float rayDistance;
-    
+    public AudioClip walkSound;
+    public AudioClip hurtSound;
+    public AudioClip defeatSound;
+    private AudioSource audioSource;
+
+    private Vector2 lastPosition;
+    public float moveThreshold = 0.1f;
 
     public int damage = 20;
 
@@ -20,6 +26,7 @@ public class EnemyStuff : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; // Hittar player
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -35,9 +42,16 @@ public class EnemyStuff : MonoBehaviour
         // Code that makes it so the enemy dies and gets removed from the game
         if (health <= 0)
         {
-            Destroy(gameObject);
+            PlaySound(defeatSound);
+            Invoke("DestroyEnemy", 1.0f);
+        }
+
+        if (isMoving())
+        {
+            PlaySound(walkSound);
         }
     }
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -47,6 +61,26 @@ public class EnemyStuff : MonoBehaviour
         }
     }
 
+    public bool isMoving()
+    {
+        Vector2 currentPosition = transform.position;
+        float distanceMoved = Vector2.Distance(currentPosition, lastPosition);
+        lastPosition = currentPosition;
+        return distanceMoved > moveThreshold;
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
+
+    void DestroyEnemy()
+    {
+        Destroy(gameObject);
+    }
     private bool IsGrounded()
     {
         //  Code that checks if something is on the ground and makes it so it stays on the ground
