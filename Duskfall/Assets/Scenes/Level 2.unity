@@ -1932,7 +1932,7 @@ MonoBehaviour:
   rayDistance: 0
   isGround: 0
   timer1: 0.6
-  closingTimer1: 0
+  closingTimer1: 2
   offset: 0
   Projectile: {fileID: 7574731649931823864, guid: d292953eaffdc0f4ea3cba1a4d300442, type: 3}
   moveThreshold: 0.1
@@ -9576,11 +9576,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5849244911006712448, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.3
+      value: 276.9
       objectReference: {fileID: 0}
     - target: {fileID: 5849244911006712448, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7
+      value: 4.8
       objectReference: {fileID: 0}
     - target: {fileID: 5849244911006712448, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
       propertyPath: m_LocalPosition.z
