@@ -1924,7 +1924,7 @@ MonoBehaviour:
     m_Bits: 64
   moveSpeed: 1.5
   attackRange: 6.5
-  damage: 10
+  damage: 1500
   IceGolemWalk: {fileID: 8300000, guid: 83ae4c9120723b840b0669dd9f502dd5, type: 3}
   hurtSound: {fileID: 8300000, guid: 6979d52fda0579441a2122b95abaf337, type: 3}
   defeatSound: {fileID: 8300000, guid: 0ea6df40dc29ac74281be9d4832d39c6, type: 3}
@@ -2424,7 +2424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   detectionRange: 10
-  maxHealth: 100
+  maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
 --- !u!50 &527020941
@@ -2442,12 +2442,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &527020942
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2659,7 +2659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   detectionRange: 10
-  maxHealth: 100
+  maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
 --- !u!50 &576411944
@@ -2677,12 +2677,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &576411945
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3243,7 +3243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   detectionRange: 10
-  maxHealth: 100
+  maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
 --- !u!50 &703517970
@@ -3261,12 +3261,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &703517971
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5267,7 +5267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   detectionRange: 10
-  maxHealth: 100
+  maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
 --- !u!50 &1071047212
@@ -5285,12 +5285,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1071047213
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5418,7 +5418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   detectionRange: 10
-  maxHealth: 100
+  maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
 --- !u!50 &1076209144
@@ -5436,12 +5436,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1076209145
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5554,7 +5554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   detectionRange: 10
-  maxHealth: 100
+  maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
 --- !u!50 &1085502772
@@ -5572,12 +5572,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1085502773
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6316,7 +6316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   detectionRange: 10
-  maxHealth: 100
+  maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
 --- !u!50 &1243958815
@@ -6334,12 +6334,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1243958816
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8794,7 +8794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   detectionRange: 10
-  maxHealth: 100
+  maxHealth: 10
   currentHealth: 0
   player: {fileID: 6934069343956204819, guid: 81a702c91201670498fb041b8e4fbe87, type: 3}
 --- !u!50 &1957435863
@@ -8812,12 +8812,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1957435864
 BoxCollider2D:
   m_ObjectHideFlags: 0

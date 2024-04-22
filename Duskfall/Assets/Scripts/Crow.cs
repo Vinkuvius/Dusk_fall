@@ -6,7 +6,7 @@ public class Crow : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float detectionRange = 10f;
-    public int maxHealth = 15;
+    public int maxHealth = 10;
     public  int currentHealth;
     public Transform player; 
 
