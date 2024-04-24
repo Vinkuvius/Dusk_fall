@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class FireBallSpell : MonoBehaviour
 {
@@ -14,10 +15,11 @@ public class FireBallSpell : MonoBehaviour
         // Shortcut for timeToDespawn
         time = timeToDespawn;
     }
-    // Update is called once per frame
+
     void Update()
     {
         transform.position += transform.right * Time.deltaTime * Speed * 2;
+
         // States that when the timer of "timeToDespawn" reaches zero the projectile despawns
         if (time < 0f)
         {

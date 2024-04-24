@@ -171,3 +171,4 @@ MonoBehaviour:
   Speed: 3
   timeToDespawn: 2
   time: 0
+  player: {fileID: 0}
