@@ -21,14 +21,25 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) && canFire)
             {
-                Instantiate(ProjectilePrefab, Launcher.position, transform.rotation);
+                Quaternion VoidRotation = Quaternion.identity;
+                if (transform.localScale.x == -1)
+                {
+                    VoidRotation = Quaternion.Euler(0f, 180f, 0f);
+                }
+                Instantiate(ProjectilePrefab, Launcher.position, VoidRotation);
                 StartCoroutine(ShootWithCooldown());
                 Debug.Log("Ultimate Move: Abyssal Void Collapse");
             }
             if (Input.GetKeyDown(KeyCode.F) && ToGo)
             {
-                Instantiate(FireBallSpellPrefab, FireBallLuanch.position, transform.rotation);
-                Instantiate(FireBallSpellPrefab, FireBallLuanch2.position, transform.rotation);
+                Quaternion fireballRotation = Quaternion.identity;
+                if (transform.localScale.x == -1)
+                {
+                    fireballRotation = Quaternion.Euler(0f, 180f, 0f);
+                }
+
+                Instantiate(FireBallSpellPrefab, FireBallLuanch.position, fireballRotation);
+                Instantiate(FireBallSpellPrefab, FireBallLuanch2.position, fireballRotation);
                 StartCoroutine(MagicBeluga());
                 Debug.Log("Fireball");
             }

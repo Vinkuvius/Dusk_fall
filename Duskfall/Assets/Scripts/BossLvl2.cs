@@ -6,8 +6,8 @@ public class BossLvl2 : MonoBehaviour
 {
     public Transform bulletShootPoint1;
     public LayerMask GroundLayer;
-    public float moveSpeed = 7.5f;
-    public float attackRange = 25f;
+    public float moveSpeed = 15f;
+    public float attackRange = 5f;
     public int damage = 10;
     public AudioClip IceGolemWalk;
     public AudioClip hurtSound;
@@ -19,7 +19,7 @@ public class BossLvl2 : MonoBehaviour
     public float rayDistance;
     public bool isGround;
 
-    public float timer1 = 0.25f;
+    public float timer1 = 0.2f;
     public float closingTimer1;
     public float offset;
 
@@ -44,7 +44,7 @@ public class BossLvl2 : MonoBehaviour
             house.gameObject.SetActive(true);
         }
 
-        if (Vector3.Distance(transform.position, player.position) <= 55)
+        if (Vector3.Distance(transform.position, player.position) <= 15)
         {
             transform.position = Vector3.MoveTowards(transform.position,
             player.position,
@@ -57,6 +57,7 @@ public class BossLvl2 : MonoBehaviour
             if (Vector3.Distance(transform.position, player.position) < attackRange)
             {
                 Shoot1();
+                Debug.Log("Boss Shot");
             }
         }
 
@@ -68,11 +69,11 @@ public class BossLvl2 : MonoBehaviour
 
     void Shoot1()
     {
-        Vector3 directionToPlayer = (player.position - bulletShootPoint1.position).normalized;
-        Quaternion rotationToPlayer = Quaternion.LookRotation(Vector3.forward, directionToPlayer);
+        EnemyProjectile p1 = Instantiate(Projectile, bulletShootPoint1.position, Quaternion.identity);
 
-        EnemyProjectile p1 = Instantiate(Projectile, bulletShootPoint1.position, rotationToPlayer);
-        p1.fireDirection = directionToPlayer;
+        Vector2 direction = (player.position - transform.position).normalized;
+
+        p1.fireDirection = direction;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
