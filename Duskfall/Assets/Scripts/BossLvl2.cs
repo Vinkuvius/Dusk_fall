@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class BossLvl2 : MonoBehaviour
 {
-    public Transform bulletShootPoint1;
     public LayerMask GroundLayer;
     public float moveSpeed = 15f;
-    public float attackRange = 5f;
+    public float attackRange = 100f;
+    public float SeeDIstance = 200f;
     public int damage = 10;
     public AudioClip IceGolemWalk;
     public AudioClip hurtSound;
@@ -18,12 +19,16 @@ public class BossLvl2 : MonoBehaviour
     private AudioSource audioSource;
     public float rayDistance;
     public bool isGround;
+    private float chargeDelayTimer = 0f;
+    public float chargeDelayDuration = 2f;
+    private float currentMoveSpeed;
+    private const float maxChargeDistance = 10f;
+    private float distanceMovedDuringCharge = 0f;
 
     public float timer1 = 0.2f;
     public float closingTimer1;
     public float offset;
 
-    public EnemyProjectile Projectile;
     private Vector2 lastPosition;
     public float moveThreshold = 0.1f;
 
@@ -33,6 +38,8 @@ public class BossLvl2 : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         audioSource = GetComponent<AudioSource>();
+
+        currentMoveSpeed = moveSpeed;
     }
 
     void Update()
@@ -44,21 +51,24 @@ public class BossLvl2 : MonoBehaviour
             house.gameObject.SetActive(true);
         }
 
-        if (Vector3.Distance(transform.position, player.position) <= 15)
+        if (Vector3.Distance(transform.position, player.position) <= SeeDIstance)
         {
-            transform.position = Vector3.MoveTowards(transform.position,
-            player.position,
-            moveSpeed * Time.deltaTime);
+            MoveTowardsPlayer();
         }
-        timer1 += Time.deltaTime;
-        if (timer1 > closingTimer1)
+
+        if (chargeDelayTimer <= 0f)
         {
-            timer1 = 0.2f;
-            if (Vector3.Distance(transform.position, player.position) < attackRange)
+            // Check if the player is within attack range
+            if (Vector3.Distance(transform.position, player.position) <= attackRange)
             {
-                Shoot1();
-                Debug.Log("Boss Shot");
+                // Start charging towards the player
+                ChargeTowardsPlayer();
             }
+        }
+        else
+        {
+            // Decrement the delay timer
+            chargeDelayTimer -= Time.deltaTime;
         }
 
         if (isMoving())
@@ -67,13 +77,47 @@ public class BossLvl2 : MonoBehaviour
         }
     }
 
-    void Shoot1()
+    void MoveTowardsPlayer()
     {
-        EnemyProjectile p1 = Instantiate(Projectile, bulletShootPoint1.position, Quaternion.identity);
+        // Move towards the player at normal speed
+        transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+    }
+    void ChargeTowardsPlayer()
+    {
+        // Increase the movement speed for charging
+        currentMoveSpeed = moveSpeed * 50f;
 
-        Vector2 direction = (player.position - transform.position).normalized;
 
-        p1.fireDirection = direction;
+        // Move towards the player at increased speed
+        transform.position = Vector3.MoveTowards(transform.position, player.position, currentMoveSpeed * Time.deltaTime);
+
+        distanceMovedDuringCharge += currentMoveSpeed * Time.deltaTime;
+
+        if (distanceMovedDuringCharge >= maxChargeDistance)
+        {
+            // Reset the movement speed to normal after the rush
+            currentMoveSpeed = moveSpeed;
+            distanceMovedDuringCharge = 0f;
+            chargeDelayTimer = chargeDelayDuration;
+        }
+
+        // Check if boss is close enough to attack
+        if (Vector3.Distance(transform.position, player.position) < attackRange)
+        {
+            Debug.Log("Boss Charging at Player");
+        }
+
+        // Check if boss has reached the player
+        if (Vector3.Distance(transform.position, player.position) <= 0.1f)
+        {
+            // Reset the movement speed to normal after the rush
+            currentMoveSpeed = moveSpeed;
+        }
+
+        if (isMoving())
+        {
+            PlaySound(IceGolemWalk);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
