@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public float sprintSpeed = 30f;
     private Rigidbody2D rb;
-    public float dodgeAcceleration = 20f;
+    public float dodgeAcceleration = 25f;
     public float dodgeDeceleration = 10f;
     private float currentDodgeVelocity = 0f;
     private float dodgeDirection = 0f;

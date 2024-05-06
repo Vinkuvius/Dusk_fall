@@ -33,6 +33,8 @@ public class BossLvl2 : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         currentMoveSpeed = moveSpeed;
+
+        GetComponent<Rigidbody2D>().collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
 
     void Update()
@@ -93,7 +95,7 @@ public class BossLvl2 : MonoBehaviour
 
     void ChargeTowardsPlayer()
     {
-        currentMoveSpeed = moveSpeed * 100f; // Adjusted multiplier for extremely fast dash
+        currentMoveSpeed = moveSpeed * 15f; // Adjusted multiplier for extremely fast dash
 
         // Calculate the direction from the boss to the player
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
